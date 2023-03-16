@@ -1,0 +1,52 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+GridPane {
+    -fx-background-color: #DCDCDC;
+    -fx-padding: 20;
+    -fx-font-family: sans-serif;
+    -fx-hgap: 10;
+}
+
+Label {
+    -fx-font-size:16;
+    -fx-font-weight: bold;
+}
+
+TextField,DatePicker,ComboBox{
+    -fx-font-size: 18;
+}
+
+Text {
+    -fx-fill:blue;
+    -fx-font-size: 32;
+    -fx-stroke-width: 1;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.id {
+    -fx-text-fill: red;
+    -fx-font-size: 18;
+}
+
+Button {
+   -fx-font-size: 18;
+   -fx-padding: 10;
+   -fx-border-color:gray;
+}
+
+Button.btSreach {
+    -fx-background-color:white;
+}
+
+Button:hover {
+    -fx-background-color: orange;
+    -fx-text-fill: white;
+    -fx-border-color:#FF6347 ;
+}
