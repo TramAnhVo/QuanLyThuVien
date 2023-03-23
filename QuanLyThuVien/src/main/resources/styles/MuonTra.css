@@ -2,15 +2,15 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
-
-}
-
 GridPane {
-    -fx-background-color: #DCDCDC;
+    -fx-background-color: #F8F8FF;
     -fx-padding: 20;
     -fx-font-family: sans-serif;
     -fx-hgap: 10;
+}
+
+AnchorPane {
+    -fx-background-color: #F8F8FF;
 }
 
 Label {
@@ -36,17 +36,24 @@ Text {
 }
 
 Button {
-   -fx-font-size: 18;
-   -fx-padding: 10;
-   -fx-border-color:gray;
+   -fx-font-size: 20;
 }
 
 Button.btSreach {
     -fx-background-color:white;
 }
 
-Button:hover {
-    -fx-background-color: orange;
-    -fx-text-fill: white;
-    -fx-border-color:#FF6347 ;
+.btLuu {
+    -fx-background-color: #33CC00;
+    -fx-text-fill: White;
+}
+
+.btHuy {
+    -fx-background-color: red;
+    -fx-text-fill: White;
+}
+
+.btSua {
+    -fx-background-color: #3333FF;
+    -fx-text-fill: White;
 }

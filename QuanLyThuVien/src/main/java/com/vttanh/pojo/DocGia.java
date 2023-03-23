@@ -4,6 +4,7 @@
  */
 package com.vttanh.pojo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -37,6 +38,21 @@ public class DocGia {
         this.DiaChi = DiaChi;
         this.BoPhan = BoPhan;
         this.DoiTuong = DoiTuong;
+    }
+    
+    public DocGia(int id, String Ten) {
+        this.id = id;
+        this.Ten = Ten;
+    }
+    
+    public DocGia(int id,String Ten, LocalDate NgaySinh, String GT, String Email, String SDT, String DiaChi) {
+        this.id = id;
+        this.Ten = Ten;
+        this.NgaySinh = NgaySinh;
+        this.GT = GT;
+        this.Email = Email;
+        this.SDT = SDT;
+        this.DiaChi = DiaChi;
     }
 
     public DocGia() {

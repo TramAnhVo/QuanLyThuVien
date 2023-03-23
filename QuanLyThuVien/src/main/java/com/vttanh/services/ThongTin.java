@@ -5,16 +5,20 @@
 package com.vttanh.services;
 
 import com.vttanh.pojo.DocGia;
+import com.vttanh.pojo.NguoiDoc;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Trâm Anh
  */
-public class DangKiThongTin {
+public class ThongTin {
     public boolean ThemThongTin( DocGia k) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
@@ -33,8 +37,8 @@ public class DangKiThongTin {
             stm.setInt(10, k.getBoPhan());
             stm.executeUpdate();
             
-                        
-            try {
+            
+           try {
                 conn.commit();
                 return true;
             } catch (SQLException ex) {
@@ -42,5 +46,39 @@ public class DangKiThongTin {
                 return false;
             }
         }               
-    }    
+    } 
+    
+
+    public List<DocGia> xemThongTinDocGia(String kw) throws SQLException {
+        List<DocGia> d = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            String sql = "SELECT * FROM docgia";
+            if (kw != null && !kw.isEmpty())
+                sql += " WHERE HoTen like concat('%', ?, '%')";
+            
+            PreparedStatement stm = conn.prepareCall(sql);
+            if (kw != null && !kw.isEmpty())
+                stm.setString(1, kw);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                DocGia q = new DocGia(
+                    rs.getInt("id"),
+                    rs.getString("HoTen"));
+                d.add(q);
+            }
+        }
+        
+        return d;
+    }
+    
+//    public boolean deleteQuestion(String id) throws SQLException {
+//        try (Connection conn = JdbcUtils.getConn()) {
+//            String sql = "DELETE FROM question WHERE id=?";
+//            PreparedStatement stm = conn.prepareCall(sql);
+//            stm.setString(1, id);
+//            
+//            return stm.executeUpdate() > 0;
+//        }
+//    }
 }

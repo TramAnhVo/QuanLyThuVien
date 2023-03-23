@@ -8,24 +8,18 @@ package com.vttanh.pojo;
  *
  * @author Trâm Anh
  */
-public class NXB {
-    
+public class NguoiDoc {
     private int id;
-    private String Tennxb;
-
-    public NXB(int id, String Tennxb) {
-        this.id = id;
-        this.Tennxb = Tennxb;
-    }
-
-    public NXB() {
-    }
-
-    @Override
-    public String toString() {
-        return this.getTennxb();}
+    private String Ten;
     
-     /**
+    public NguoiDoc(int id, String Ten) {
+        this.id = id;
+        this.Ten = Ten;
+    }
+    
+    public NguoiDoc(){}
+
+    /**
      * @return the id
      */
     public int getId() {
@@ -40,16 +34,18 @@ public class NXB {
     }
 
     /**
-     * @return the Tennxb
+     * @return the Ten
      */
-    public String getTennxb() {
-        return Tennxb;
+    public String getTen() {
+        return Ten;
     }
 
     /**
-     * @param Tennxb the Tennxb to set
+     * @param Ten the Ten to set
      */
-    public void setTennxb(String Tennxb) {
-        this.Tennxb = Tennxb;
+    public void setTen(String Ten) {
+        this.Ten = Ten;
     }
+    
+    
 }

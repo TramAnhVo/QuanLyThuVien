@@ -11,7 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -20,11 +24,16 @@ import javafx.stage.Stage;
  * @author Trâm Anh
  */
 public class PhieuMuonController implements Initializable {
-    @FXML private javafx.scene.control.Button Huy;
+    @FXML private Button Huy;
+    @FXML private Label lbMaPhieu;
+    @FXML private TextField txtTen;
+    @FXML private DatePicker dateNgayMuon;
+    @FXML private TextField txtMaSach;
+    @FXML private TextField txtTenSach;
+    @FXML private TextField txtSoLuong;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     } 
       
     public void Exit(ActionEvent event) throws Exception {

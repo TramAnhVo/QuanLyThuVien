@@ -3,8 +3,8 @@
  */
 
 GridPane {
-    -fx-padding: 15;
-    -fx-background-color: #DDDDDD;
+    -fx-padding: 20;
+    -fx-background-color: #F8F8FF;
 }
 
 Label {
@@ -19,21 +19,23 @@ Label.sub {
 }
 
 TextField,RadioButton {
-    -fx-font-size: 18; 
+    -fx-font-size: 20; 
 }
 
 ComboBox,DatePicker {
-    -fx-font-size: 18; 
+    -fx-font-size: 20; 
 }
 
 Button {
-    -fx-font-size: 18;
-    -fx-background-color:lightgray;
-    -fx-border-color: gray ;
+    -fx-font-size: 20;
 }
 
-Button:hover {
-    -fx-background-color: orange;
-    -fx-text-fill: white;
-    -fx-border-color:#FF6347 ;
+.btLuu {
+    -fx-background-color: #33CC00;
+    -fx-text-fill: White;
+}
+
+.btHuy {
+    -fx-background-color: red;
+    -fx-text-fill: White;
 }

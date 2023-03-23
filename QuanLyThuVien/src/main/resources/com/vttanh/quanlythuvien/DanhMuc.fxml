@@ -1,131 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="932.0" stylesheets="@../../../styles/danhmuc.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.DanhMucController">
    <children>
-      <HBox prefHeight="66.0" prefWidth="600.0" spacing="10.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="132.0" text="Mã sách:">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin></Label>
-            <TextField>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="54.0">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../hình%20thực%20hành%20LTGD/lup.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="23.0" prefWidth="110.0" text="Tên sách:">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin></Label>
-            <TextField prefHeight="40.0" prefWidth="225.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="54.0">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../hình%20thực%20hành%20LTGD/lup.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox layoutX="10.0" layoutY="76.0" prefHeight="66.0" prefWidth="600.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="139.0" text="Năm xuất bản:">
-               <padding>
-                  <Insets left="5.0" />
-               </padding></Label>
-            <ComboBox prefHeight="36.0" prefWidth="215.0" />
-            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="54.0">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../hình%20thực%20hành%20LTGD/lup.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="23.0" prefWidth="106.0" text="Thể loại:">
-               <HBox.margin>
-                  <Insets left="60.0" />
-               </HBox.margin></Label>
-            <ComboBox prefHeight="36.0" prefWidth="222.0" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="41.0" prefWidth="54.0">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../hình%20thực%20hành%20LTGD/lup.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="172.79998475313187" text="Mã sách" />
-          <TableColumn prefWidth="335.99998474121094" text="Tên sách" />
-            <TableColumn prefWidth="284.79998779296875" text="Tác giả" />
-            <TableColumn prefWidth="133.60009765625" text="NXB" />
-        </columns>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </TableView>
-      <TableView layoutX="10.0" layoutY="194.0" maxWidth="-Infinity" prefHeight="150.0" prefWidth="627.0">
-         <columns>
-            <TableColumn prefWidth="195.999966442585" text="Thể loại" />
-            <TableColumn prefWidth="160.80006408691406" text="Vị trí" />
-            <TableColumn prefWidth="124.800048828125" text="Dãy" />
-            <TableColumn prefWidth="132.00006103515625" text="Kệ" />
-         </columns>
-      </TableView>
-      <HBox alignment="CENTER_RIGHT" prefHeight="81.0" prefWidth="933.0">
-         <children>
-            <Button id="Thoat" mnemonicParsing="false" prefHeight="39.0" prefWidth="119.0" text="Thoát">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="60.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
+      <TableView fx:id="tbNguoiDoc" layoutX="35.0" layoutY="101.0" prefHeight="280.0" prefWidth="683.0" />
+      <TextField fx:id="txtSearch" layoutX="35.0" layoutY="35.0" prefHeight="47.0" prefWidth="331.0" />
    </children>
-</VBox>
+</Pane>

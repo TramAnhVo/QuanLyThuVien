@@ -7,18 +7,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Trâm Anh
 */
 VBox {
-    -fx-spacing:10;
-    -fx-background-color: #F8F8FF;
+    -fx-spacing: 10;
+    -fx-background-color: #E6E6FA;
     -fx-font-family: Tahoma;
 }
 
 HBox {
-    -fx-spacing: 5;
+    -fx-spacing: 10;
 }
 
 Text {
     -fx-fill:blue;
-    -fx-font-size: 40;
+    -fx-font-size: 45;
     -fx-stroke-width: 1;
     -fx-font-weight: bold;
     -fx-padding:10;

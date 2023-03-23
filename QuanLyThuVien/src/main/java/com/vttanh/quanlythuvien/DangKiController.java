@@ -8,7 +8,7 @@ import com.vttanh.pojo.BoPhan;
 import com.vttanh.pojo.DocGia;
 import com.vttanh.pojo.DoiTuong;
 import com.vttanh.services.BoPhanService;
-import com.vttanh.services.DangKiThongTin;
+import com.vttanh.services.ThongTin;
 import com.vttanh.services.DoiTuongServices;
 import com.vttanh.utils.MessageBox;
 import java.net.URL;
@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,9 +26,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,6 +48,8 @@ public class DangKiController implements Initializable {
     @FXML private TextField txtDiaChi;
     @FXML private TextField txtSDT;
     @FXML private DatePicker dateNgaySinh;
+    @FXML private Button btHuy;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,7 +63,7 @@ public class DangKiController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+                
     }
     
     public void DangKiThongTin(ActionEvent evt) {
@@ -65,12 +71,12 @@ public class DangKiController implements Initializable {
                 this.dateNgaySinh.getValue(), 
                 this.txtGT.getText(),              
                 this.txtEmail.getText(),
-                this.txtDiaChi.getText(),
                 this.txtSDT.getText(),
-                this.cbBoPhan.getSelectionModel().getSelectedItem().getId(),
-                this.cbDoiTuong.getSelectionModel().getSelectedItem().getId());
+                this.txtDiaChi.getText(),
+                this.cbDoiTuong.getSelectionModel().getSelectedItem().getId(),
+                this.cbBoPhan.getSelectionModel().getSelectedItem().getId());
 
-        DangKiThongTin s = new DangKiThongTin();
+        ThongTin s = new ThongTin();
         try {
             s.ThemThongTin(q);
             MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
@@ -79,6 +85,16 @@ public class DangKiController implements Initializable {
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+        
+    public void Exit(ActionEvent event) throws Exception {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Thông báo");
+        a.setHeaderText("Bạn muốn thoát?");
+        Optional<ButtonType> re = a.showAndWait();
+        if (re.get() == ButtonType.OK)
+            {
+                Stage stage = (Stage) btHuy.getScene().getWindow();
+                stage.close();
+            }
+    }
 }

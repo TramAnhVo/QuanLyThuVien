@@ -6,11 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -19,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="887.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.PhieuMuonController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="891.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.PhieuMuonController">
   <tabs>
     <Tab text="Thông tin trả">
       <content>
@@ -41,13 +38,16 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN TRẢ SÁCH" textAlignment="CENTER" wrappingWidth="726.9366943836212" />
                         <Label prefHeight="18.0" prefWidth="140.0" text="Số phiếu trả:" GridPane.rowIndex="1" />
                         <Label prefHeight="18.0" prefWidth="151.0" text="Họ và tên :" GridPane.rowIndex="2" />
-                        <Label prefHeight="18.0" prefWidth="130.0" text="Ngày trả:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label prefHeight="18.0" prefWidth="130.0" text="Ngày trả:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin></Label>
                         <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label id="idTra" prefHeight="18.0" prefWidth="102.0" text="PM01" textFill="#e70a0a" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <GridPane layoutX="35.0" layoutY="229.0" prefHeight="123.0" prefWidth="746.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="225.0">
+                  <GridPane layoutX="60.0" layoutY="196.0" prefHeight="123.0" prefWidth="746.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="196.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.20001220703125" minWidth="10.0" prefWidth="108.39999389648438" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0000122070312" minWidth="10.0" prefWidth="316.0" />
@@ -61,7 +61,10 @@
                      <children>
                         <Label prefHeight="18.0" prefWidth="140.0" text="Mã sách:" />
                         <Label prefHeight="18.0" prefWidth="151.0" text="Tên sách" GridPane.rowIndex="1" />
-                        <Label prefHeight="20.0" prefWidth="82.0" text="Số lượng:" GridPane.columnIndex="2" />
+                        <Label prefHeight="20.0" prefWidth="83.0" text="Số lượng:" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets left="8.0" />
+                           </GridPane.margin></Label>
                         <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField layoutX="166.0" layoutY="139.0" GridPane.columnIndex="1" />
                         <TextField GridPane.columnIndex="1" />
@@ -69,19 +72,12 @@
                         <TextField GridPane.columnIndex="3" />
                      </children>
                   </GridPane>
-                  <TableView layoutX="60.0" layoutY="427.0" prefHeight="158.0" prefWidth="767.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="427.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="STT" />
-                      <TableColumn prefWidth="183.20001220703125" text="Mã sách" />
-                        <TableColumn prefWidth="380.0" text="Tên sách" />
-                        <TableColumn prefWidth="120.800048828125" text="Số lượng" />
-                    </columns>
-                  </TableView>
-                  <Button layoutX="656.0" layoutY="596.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="134.0" text="Lưu thông tin" AnchorPane.bottomAnchor="20.0" />
-                  <Button fx:id="Huy" layoutX="528.0" layoutY="596.0" mnemonicParsing="false" onAction="#Exit" prefHeight="42.0" prefWidth="110.0" text="Hủy" AnchorPane.bottomAnchor="20.0" />
-                  <Button layoutX="428.0" layoutY="362.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="Thêm" />
-                  <Button layoutX="548.0" layoutY="362.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="Cập nhật" />
-                  <Button layoutX="665.0" layoutY="362.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="Xóa" />
+                  <TableView layoutX="60.0" layoutY="399.0" prefHeight="158.0" prefWidth="767.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="399.0" />
+                  <Button layoutX="632.0" layoutY="580.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="148.0" styleClass="btLuu" text="Lưu thông tin" AnchorPane.bottomAnchor="35.200000000000045" />
+                  <Button fx:id="Huy" layoutX="503.0" layoutY="584.0" mnemonicParsing="false" onAction="#Exit" prefHeight="42.0" prefWidth="110.0" styleClass="btHuy" text="Hủy" AnchorPane.bottomAnchor="38.39999999999998" />
+                  <Button layoutX="428.0" layoutY="333.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" styleClass="btLuu" text="Thêm" />
+                  <Button layoutX="551.0" layoutY="333.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="110.0" styleClass="btSua" text="Cập nhật" />
+                  <Button layoutX="680.0" layoutY="333.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" styleClass="btHuy" text="Xóa" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -103,28 +99,11 @@
                                     <Insets right="2.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button id="btSreach" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" styleClass="btSreach">
-                                 <graphic>
-                                    <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../hình%20thực%20hành%20LTGD/lup.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <TableView layoutX="20.0" layoutY="109.0" prefHeight="489.0" prefWidth="838.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
-                    <columns>
-                      <TableColumn prefWidth="68.80001831054688" text="STT" />
-                      <TableColumn prefWidth="149.60000610351562" text="Số phiếu" />
-                        <TableColumn prefWidth="282.4000244140625" text="Tên độc giả" />
-                        <TableColumn prefWidth="102.39996337890625" text="Số lượng " />
-                        <TableColumn prefWidth="178.4000244140625" text="Ngày trả" />
-                    </columns>
-                  </TableView>
+                  <TableView layoutX="20.0" layoutY="109.0" prefHeight="489.0" prefWidth="838.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0" />
                </children></AnchorPane>
       </content>
     </Tab>
