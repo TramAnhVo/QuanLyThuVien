@@ -17,8 +17,7 @@ HBox {
 }
 
 Text {
-    -fx-fill:blue;
-    -fx-font-size: 45;
+    -fx-font-size: 50;
     -fx-stroke-width: 1;
     -fx-font-weight: bold;
     -fx-padding:10;

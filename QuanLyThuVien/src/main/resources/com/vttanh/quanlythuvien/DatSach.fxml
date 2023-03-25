@@ -21,7 +21,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="910.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.PhieuMuonController">
   <tabs>
-    <Tab text="Thông tin mượn">
+    <Tab text="Thông tin đặt sách">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="882.0">
                <children>
@@ -38,7 +38,7 @@
                       <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN MƯỢN SÁCH" textAlignment="CENTER" wrappingWidth="726.9366943836212">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN ĐẶT SÁCH" textAlignment="CENTER" wrappingWidth="726.9366943836212">
                            <fill>
                               <LinearGradient endX="0.6287879076871005" endY="0.9772727354006334" startX="0.3863636505874721">
                                  <stops>
@@ -55,13 +55,13 @@
                                  </stops>
                               </LinearGradient>
                            </fill></Text>
-                        <Label prefHeight="20.0" prefWidth="128.0" text="Số phiếu mượn:" GridPane.rowIndex="1" />
+                        <Label prefHeight="20.0" prefWidth="128.0" text="Số phiếu đặt:" GridPane.rowIndex="1" />
                         <Label prefHeight="18.0" prefWidth="151.0" text="Họ và tên :" GridPane.rowIndex="2" />
-                        <Label prefHeight="18.0" prefWidth="130.0" text="Ngày mượn:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Label prefHeight="18.0" prefWidth="130.0" text="Ngày đặt:" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></Label>
-                        <DatePicker fx:id="dateNgayMuon" promptText="Ngày mượn sách" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dateNgayMuon" promptText="Ngày đặt sách" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField fx:id="txtTen" promptText="Họ tên độc giả" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label id="idTra" fx:id="lbMaPhieu" prefHeight="20.0" prefWidth="178.0" text="PM01" textFill="#e70a0a" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label layoutX="467.0" layoutY="96.0" prefHeight="20.0" prefWidth="82.0" text="SĐT:" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -72,7 +72,7 @@
                         <TextField fx:id="txtSDT" layoutX="176.0" layoutY="130.0" promptText="Số điện thoại" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <GridPane layoutX="60.0" layoutY="195.0" prefHeight="123.0" prefWidth="746.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="195.0">
+                  <GridPane layoutX="60.0" layoutY="204.0" prefHeight="123.0" prefWidth="746.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="204.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.20001220703125" minWidth="10.0" prefWidth="127.59998779296876" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0000122070312" minWidth="10.0" prefWidth="269.20002441406257" />
@@ -84,7 +84,7 @@
                         <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="55.79999389648438" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="18.0" prefWidth="140.0" text="Tổng số lượng:" />
+                        <Label prefHeight="18.0" prefWidth="140.0" text="Tổng số đặt:" />
                         <Label prefHeight="18.0" prefWidth="151.0" text="Tên sách:" GridPane.rowIndex="1" />
                         <Label prefHeight="20.0" prefWidth="82.0" text="Số lượng:" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
@@ -93,7 +93,7 @@
                         <TextField fx:id="txtTenSach" promptText="Tên sách" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField layoutX="166.0" layoutY="139.0" GridPane.columnIndex="1" />
                         <TextField promptText="Tổng số sách ượn" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtTong" promptText="Tổng số sách mượn" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtTong" promptText="Tổng số sách đặt" GridPane.columnIndex="1" />
                         <TextField fx:id="txtSoLuong" promptText="Số lượng mượn" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
@@ -106,7 +106,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Danh sách mượn">
+    <Tab text="Danh sách đặt sách">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="864.0">
                <children>

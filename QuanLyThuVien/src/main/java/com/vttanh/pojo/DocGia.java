@@ -45,14 +45,11 @@ public class DocGia {
         this.Ten = Ten;
     }
     
-    public DocGia(int id,String Ten, LocalDate NgaySinh, String GT, String Email, String SDT, String DiaChi) {
+    public DocGia(int id,String Ten, String GT, String SDT) {
         this.id = id;
         this.Ten = Ten;
-        this.NgaySinh = NgaySinh;
         this.GT = GT;
-        this.Email = Email;
         this.SDT = SDT;
-        this.DiaChi = DiaChi;
     }
 
     public DocGia() {

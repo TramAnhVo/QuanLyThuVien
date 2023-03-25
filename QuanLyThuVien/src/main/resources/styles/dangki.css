@@ -11,6 +11,14 @@ Label {
     -fx-font-size: 18;
 }
 
+Text {
+    -fx-fill:blue;
+    -fx-font-size: 32;
+    -fx-stroke-width: 1;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
 Label.sub {
     -fx-font-size: 28; 
     -fx-text-fill: blue;
@@ -38,4 +46,8 @@ Button {
 .btHuy {
     -fx-background-color: red;
     -fx-text-fill: White;
+}
+
+TableView {
+    -fx-font-size: 18;
 }

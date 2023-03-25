@@ -6,18 +6,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="941.0" stylesheets="@../../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.TrangChuController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="952.0" stylesheets="@../../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.TrangChuController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ THƯ VIỆN" textAlignment="CENTER" wrappingWidth="903.3839721679688">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ THƯ VIỆN" textAlignment="CENTER" wrappingWidth="920.9840698242188">
          <VBox.margin>
-            <Insets />
+            <Insets bottom="10.0" />
          </VBox.margin>
          <font>
             <Font name="Arial" size="36.0" />
-         </font></Text>
+         </font>
+         <fill>
+            <LinearGradient endX="0.6022727633967544" endY="0.7651515404383342" startX="0.31818182721282495" startY="0.7386363636363636">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.42056921124458313" green="0.05460000038146973" blue="0.9100000262260437" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.06859999895095825" green="0.6846047043800354" blue="0.9800000190734863" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Text>
       <HBox alignment="CENTER" prefHeight="241.0" prefWidth="883.0">
          <children>
             <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#DangKi" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Đăng kí thông tin">
@@ -44,7 +63,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTra" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Trả sách">
+            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTraSach" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Trả sách">
                <graphic>
                   <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,11 +79,11 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="241.0" prefWidth="883.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Xem thông tin">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#datSach" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Đặt sách ">
                <graphic>
                   <ImageView fitHeight="167.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image/image_5.png" />
+                        <Image url="@../../../image/image_5.jpg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -88,7 +107,7 @@
                <graphic>
                   <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image/book-9.jpg" />
+                        <Image url="@../../../image/image_4.jpg" />
                      </image>
                   </ImageView>
                </graphic>

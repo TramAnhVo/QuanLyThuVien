@@ -5,4 +5,5 @@ module com.vttanh.quanlythuvien {
     requires java.sql;
     opens com.vttanh.quanlythuvien to javafx.fxml;
     exports com.vttanh.quanlythuvien;
+    exports com.vttanh.pojo;
 }

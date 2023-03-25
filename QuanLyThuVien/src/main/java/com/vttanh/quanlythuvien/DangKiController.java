@@ -30,7 +30,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -49,7 +52,8 @@ public class DangKiController implements Initializable {
     @FXML private TextField txtSDT;
     @FXML private DatePicker dateNgaySinh;
     @FXML private Button btHuy;
-
+    @FXML private TextField txtSearch;
+    @FXML private TableView<DocGia> tbDocGia;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,10 +64,20 @@ public class DangKiController implements Initializable {
             this.cbDoiTuong.setItems(FXCollections.observableList(dt));
             List<BoPhan> bp = x.getBoPhan();
             this.cbBoPhan.setItems(FXCollections.observableList(bp));
+            
+            this.loadTableColumns();
+            this.loadTableData(null);
         } catch (SQLException ex) {
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+        
+        this.txtSearch.textProperty().addListener(d -> {
+            try {
+                this.loadTableData(this.txtSearch.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
     
     public void DangKiThongTin(ActionEvent evt) {
@@ -79,11 +93,38 @@ public class DangKiController implements Initializable {
         ThongTin s = new ThongTin();
         try {
             s.ThemThongTin(q);
+            this.loadTableData(null);
             MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
         } catch (SQLException ex) {
             MessageBox.getBox("Thông báo", "Thêm thông tin thất bại", Alert.AlertType.ERROR).show();
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void loadTableColumns() {
+        TableColumn colid = new TableColumn("STT");
+        colid.setCellValueFactory(new PropertyValueFactory("id"));
+        colid.setPrefWidth(80);
+        
+        TableColumn colname = new TableColumn("Họ và tên độc giả");
+        colname.setCellValueFactory(new PropertyValueFactory("Ten"));
+        colname.setPrefWidth(200);
+        
+        TableColumn colgt = new TableColumn("Giới tính");
+        colgt.setCellValueFactory(new PropertyValueFactory("GT"));
+        colgt.setPrefWidth(100);
+        
+        TableColumn colsdt = new TableColumn("Số điện thoại");
+        colsdt.setCellValueFactory(new PropertyValueFactory("SDT"));
+        colsdt.setPrefWidth(150);
+        
+        this.tbDocGia.getColumns().addAll(colid, colname, colgt,colsdt);
+    }
+    
+    private void loadTableData (String kw) throws SQLException{
+        ThongTin s = new ThongTin();
+        List<DocGia> k = s.xemThongTinDocGia(kw);
+        this.tbDocGia.setItems(FXCollections.observableList(k));
     }
         
     public void Exit(ActionEvent event) throws Exception {

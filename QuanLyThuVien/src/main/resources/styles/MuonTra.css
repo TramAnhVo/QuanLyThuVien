@@ -23,8 +23,7 @@ TextField,DatePicker,ComboBox{
 }
 
 Text {
-    -fx-fill:blue;
-    -fx-font-size: 32;
+    -fx-font-size: 40;
     -fx-stroke-width: 1;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
@@ -56,4 +55,8 @@ Button.btSreach {
 .btSua {
     -fx-background-color: #3333FF;
     -fx-text-fill: White;
+}
+
+TableView {
+    -fx-font-size: 18;
 }

@@ -14,6 +14,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="910.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.PhieuMuonController">
@@ -35,16 +38,38 @@
                       <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN MƯỢN SÁCH" textAlignment="CENTER" wrappingWidth="726.9366943836212" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN MƯỢN SÁCH" textAlignment="CENTER" wrappingWidth="726.9366943836212">
+                           <fill>
+                              <LinearGradient endX="0.6287879076871005" endY="0.9772727354006334" startX="0.3863636505874721">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.024288499727845192" green="0.05470695346593857" blue="0.9368420839309692" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.8105263113975525" green="0.08705653250217438" blue="0.6055431962013245" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill></Text>
                         <Label prefHeight="20.0" prefWidth="128.0" text="Số phiếu mượn:" GridPane.rowIndex="1" />
                         <Label prefHeight="18.0" prefWidth="151.0" text="Họ và tên :" GridPane.rowIndex="2" />
                         <Label prefHeight="18.0" prefWidth="130.0" text="Ngày mượn:" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></Label>
-                        <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <TextField promptText="Họ tên đọc giả" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dateNgayMuon" promptText="Ngày mượn sách" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtTen" promptText="Họ tên độc giả" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label id="idTra" fx:id="lbMaPhieu" prefHeight="20.0" prefWidth="178.0" text="PM01" textFill="#e70a0a" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label layoutX="467.0" layoutY="96.0" prefHeight="20.0" prefWidth="82.0" text="SĐT:" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="txtSDT" layoutX="176.0" layoutY="130.0" promptText="Số điện thoại" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="60.0" layoutY="195.0" prefHeight="123.0" prefWidth="746.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="195.0">
@@ -59,21 +84,21 @@
                         <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="55.79999389648438" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="18.0" prefWidth="140.0" text="Mã sách:" />
-                        <Label prefHeight="18.0" prefWidth="151.0" text="Tên sách" GridPane.rowIndex="1" />
-                        <Label prefHeight="20.0" prefWidth="82.0" text="Số lượng:" GridPane.columnIndex="2">
+                        <Label prefHeight="18.0" prefWidth="140.0" text="Tổng số lượng:" />
+                        <Label prefHeight="18.0" prefWidth="151.0" text="Tên sách:" GridPane.rowIndex="1" />
+                        <Label prefHeight="20.0" prefWidth="82.0" text="Số lượng:" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin></Label>
-                        <TextField promptText="Tên sách" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtTenSach" promptText="Tên sách" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField layoutX="166.0" layoutY="139.0" GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField promptText="Mã sách" GridPane.columnIndex="1" />
-                        <TextField promptText="Số lượng mượn" GridPane.columnIndex="3" />
+                        <TextField promptText="Tổng số sách ượn" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtTong" promptText="Tổng số sách mượn" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtSoLuong" promptText="Số lượng mượn" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <TableView layoutX="60.0" layoutY="399.0" prefHeight="158.0" prefWidth="767.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="399.0" />
-                  <Button id="btLuu" layoutX="625.0" layoutY="568.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" styleClass="btLuu" text="Lưu thông tin" AnchorPane.bottomAnchor="23.200000000000045" />
+                  <Button id="btLuu" layoutX="625.0" layoutY="568.0" mnemonicParsing="false" onAction="#themPhieuMuon" prefHeight="50.0" prefWidth="149.0" styleClass="btLuu" text="Lưu thông tin" AnchorPane.bottomAnchor="23.200000000000045" />
                   <Button id="btHuy" fx:id="Huy" layoutX="502.0" layoutY="569.0" mnemonicParsing="false" onAction="#Exit" prefHeight="48.0" prefWidth="110.0" styleClass="btHuy" text="Hủy" AnchorPane.bottomAnchor="24.600000000000023" />
                   <Button layoutX="410.0" layoutY="333.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="108.0" styleClass="btLuu" text="Thêm" />
                   <Button id="btSua" layoutX="534.0" layoutY="333.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="114.0" styleClass="btSua" text="Cập nhật" />
@@ -94,7 +119,7 @@
                         </Label>
                         <HBox prefHeight="41.0" prefWidth="807.0">
                            <children>
-                              <TextField prefHeight="37.0" prefWidth="255.0">
+                              <TextField fx:id="txtSearch" prefHeight="37.0" prefWidth="255.0">
                                  <HBox.margin>
                                     <Insets right="2.0" />
                                  </HBox.margin>
@@ -103,7 +128,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <TableView layoutX="20.0" layoutY="109.0" prefHeight="489.0" prefWidth="838.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0" />
+                  <TableView fx:id="tbPhieuMuon" layoutX="20.0" layoutY="109.0" prefHeight="489.0" prefWidth="838.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0" />
                </children></AnchorPane>
       </content>
     </Tab>
