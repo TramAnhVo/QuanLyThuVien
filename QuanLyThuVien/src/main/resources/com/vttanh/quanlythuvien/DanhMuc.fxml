@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.DanhMucController">
    <children>
       <TableView fx:id="tbNguoiDoc" layoutX="35.0" layoutY="101.0" prefHeight="280.0" prefWidth="683.0" />
       <TextField fx:id="txtSearch" layoutX="35.0" layoutY="35.0" prefHeight="47.0" prefWidth="331.0" />
+      <ComboBox fx:id="cbNguoiDoc" layoutX="469.0" layoutY="46.0" prefWidth="150.0" />
    </children>
 </Pane>

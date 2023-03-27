@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: DocGiaTester
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.043 s <<< FAILURE! - in DocGiaTester
+DocGiaTester  Time elapsed: 0.04 s  <<< ERROR!
+java.lang.IllegalAccessError: class DocGiaTester (in unnamed module @0x72a7c7e0) cannot access class com.vttanh.services.JdbcUtils (in module com.vttanh.quanlythuvien) because module com.vttanh.quanlythuvien does not export com.vttanh.services to unnamed module @0x72a7c7e0
+	at DocGiaTester.beforeAll(DocGiaTester.java:36)
+

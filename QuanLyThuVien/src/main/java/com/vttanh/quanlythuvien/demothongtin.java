@@ -20,12 +20,13 @@ import java.util.List;
  * @author Trâm Anh
  */
 public class demothongtin {
+    
     public List<NguoiDoc> DemoDocDL(String kw) throws SQLException {
         List<NguoiDoc> d = new ArrayList<>();
         try (Connection conn = JdbcUtils.getConn()) {
             String sql = "SELECT * FROM nguoidoc";
             if (kw != null && !kw.isEmpty())
-                sql += " WHERE Ten like concat('%', ?)";
+                sql += " WHERE Ten like concat('%', ?, '%')";
             
             PreparedStatement stm = conn.prepareCall(sql);
             if (kw != null && !kw.isEmpty())
@@ -33,9 +34,7 @@ public class demothongtin {
             
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                NguoiDoc q = new NguoiDoc(
-                    rs.getInt("id"),
-                    rs.getString("Ten"));
+                NguoiDoc q = new NguoiDoc( rs.getInt("id"), rs.getString("Ten"));
                 d.add(q);
             }
         }
@@ -43,20 +42,17 @@ public class demothongtin {
         return d;
     }
     
-     public List<NguoiDoc> getDL() throws SQLException {
-        List<NguoiDoc> bp = new ArrayList<>();
-        try (Connection conn = JdbcUtils.getConn()) {
-            Statement stm = conn.createStatement();
-
-            ResultSet rs = stm.executeQuery("SELECT * FROM nguoidoc");
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String Ten = rs.getString("Ten");
-                bp.add(new NguoiDoc(id, Ten));
-            }
-        }        
-        return bp;
-    }
-    
-    
+//     public List<NguoiDoc> getDL() throws SQLException {
+//        List<NguoiDoc> bp = new ArrayList<>();
+//        try (Connection conn = JdbcUtils.getConn()) {
+//            Statement stm = conn.createStatement();
+//
+//            ResultSet rs = stm.executeQuery("SELECT * FROM nguoidoc");
+//            while (rs.next()) {
+//                 NguoiDoc q = new NguoiDoc( rs.getInt("id"), rs.getString("Ten"));
+//                bp.add(q);
+//            }
+//        }        
+//        return bp;
+//    } 
 }

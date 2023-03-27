@@ -37,12 +37,10 @@ public class DanhMucController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         demothongtin x = new demothongtin();
         try {
-            this.loadTableColumns();
-//            List<NguoiDoc> k = x.getDL();
-//            this.tbNguoiDoc.setItems(FXCollections.observableList(k));
             
-            List<NguoiDoc> k = x.getDL();
-            this.cbNguoiDoc.setItems(FXCollections.observableList(k));
+            this.loadTableColumns();
+            this.loadTableData(null);
+            
         } catch (SQLException ex) {
             Logger.getLogger(DanhMucController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,4 +55,12 @@ public class DanhMucController implements Initializable {
         this.tbNguoiDoc.getColumns().addAll(colContent);
     }
     
+     private void loadTableData(String kw) throws SQLException {
+        demothongtin s = new demothongtin();
+        List<NguoiDoc> q = s.DemoDocDL(kw);
+        this.tbNguoiDoc.getItems().clear();
+        this.tbNguoiDoc.setItems(FXCollections.observableList(q));
+    }
+
+   
 }

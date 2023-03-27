@@ -7,13 +7,18 @@ package com.vttanh.services;
 import com.vttanh.pojo.Sach;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Trâm Anh
  */
 public class SachService {
+
     public boolean themSach(Sach s) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
@@ -37,4 +42,27 @@ public class SachService {
             }          
         }
     }
+
+    public List<Sach> getSach(String kw) throws SQLException {
+          List<Sach> sach = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            String sql = "SELECT * FROM sach";
+            if (kw != null && !kw.isEmpty()) {
+                sql += " WHERE Ten like concat('%', ?, '%')";
+            }
+
+            PreparedStatement stm = conn.prepareCall(sql);
+            if (kw != null && !kw.isEmpty()) {
+                stm.setString(1, kw);
+            }
+
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Sach s = new Sach(rs.getString("Ten"), rs.getString("MoTa"), rs.getString("NXB"), rs.getString("SoLuong"), rs.getInt("id_theloai"));
+                sach.add(s);
+            }
+        }
+        return sach;
+    }
 }
+
