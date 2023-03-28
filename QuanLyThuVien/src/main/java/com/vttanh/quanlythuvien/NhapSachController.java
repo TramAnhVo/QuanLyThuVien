@@ -65,6 +65,7 @@ public class NhapSachController implements Initializable {
 
         SachService p = new SachService();
         try {
+            
             p.themSach(s);
             MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
             Reset();
