@@ -29,13 +29,14 @@ public class DocGia {
         NgayDangKi = LocalDate.now();
     }
 
-    public DocGia(String Ten,LocalDate NgaySinh, String GT, String Email, String SDT, String DiaChi, int DoiTuong , int BoPhan) {
+    public DocGia(String Ten,LocalDate NgaySinh, String GT, String Email, String SDT, String DiaChi,int DoiTuong , int BoPhan) {
         this.Ten = Ten;
         this.GT = GT;
         this.NgaySinh = NgaySinh;
         this.Email = Email;
         this.SDT = SDT;
         this.DiaChi = DiaChi;
+        this.NgayDangKi = NgayDangKi;
         this.BoPhan = BoPhan;
         this.DoiTuong = DoiTuong;
     }

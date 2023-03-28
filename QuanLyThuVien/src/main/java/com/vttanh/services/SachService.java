@@ -7,7 +7,11 @@ package com.vttanh.services;
 import com.vttanh.pojo.Sach;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -37,4 +41,23 @@ public class SachService {
             }          
         }
     }
+    public List<Sach> getSach() throws SQLException {
+        List<Sach> s = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            Statement stm = conn.createStatement();
+
+            ResultSet rs = stm.executeQuery("SELECT * FROM sach");
+            while (rs.next()) {
+                int idTL = rs.getInt("id_theloai");
+                String Ten = rs.getString("Ten");
+                String moTa = rs.getString("MoTa");
+                String nXB = rs.getString("NXB");
+                String sL = rs.getString("SoLuong");
+                
+                s.add(new Sach (Ten, moTa, nXB, sL, idTL));
+            }
+        }
+        
+        return s;
+    } 
 }
