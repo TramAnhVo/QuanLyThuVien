@@ -4,7 +4,6 @@
  */
 package com.vttanh.pojo;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 /**
