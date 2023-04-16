@@ -24,7 +24,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -39,8 +42,9 @@ public class NhapSachController implements Initializable {
     @FXML private TextField txtMoTa;
     @FXML private TextField txtNXB;
     @FXML private TextField txtSoLuong;
+    @FXML private TextField txtSearch;
     @FXML private ComboBox <TheLoai> cbTheLoai;
-    
+    @FXML private TableView<Sach> tbSach; 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,9 +53,20 @@ public class NhapSachController implements Initializable {
         try {
             List<TheLoai> tl = t.getTheLoai();
             this.cbTheLoai.setItems(FXCollections.observableList(tl));
+            
+            this.loadTableColumns();
+            this.loadTableData(null);
         } catch (SQLException ex) {
             Logger.getLogger(NhapSachController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        this.txtSearch.textProperty().addListener(d -> {
+            try {
+                this.loadTableData(this.txtSearch.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
     
     public void nhapThongTinSach(ActionEvent evt) {
@@ -60,12 +75,11 @@ public class NhapSachController implements Initializable {
                 this.txtNXB.getText(),
                 this.txtSoLuong.getText(),
                 this.cbTheLoai.getSelectionModel().getSelectedItem().getId());
-        
-        
-
+                
         SachService p = new SachService();
         try {
             p.themSach(s);
+            this.loadTableData(null);
             MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
             Reset();
         } catch (SQLException ex) {
@@ -74,11 +88,42 @@ public class NhapSachController implements Initializable {
         }
     }
     
+    private void loadTableColumns() {
+        TableColumn colid = new TableColumn("STT");
+        colid.setCellValueFactory(new PropertyValueFactory("id"));
+        colid.setPrefWidth(80);
+        
+        TableColumn colname = new TableColumn("Tên sách");
+        colname.setCellValueFactory(new PropertyValueFactory("Ten"));
+        colname.setPrefWidth(220);
+        
+        TableColumn colmt = new TableColumn("Mô tả");
+        colmt.setCellValueFactory(new PropertyValueFactory("MoTa"));
+        colmt.setPrefWidth(250);
+        
+        TableColumn colnxb = new TableColumn("NXB");
+        colnxb.setCellValueFactory(new PropertyValueFactory("NXB"));
+        colnxb.setPrefWidth(100);
+        
+        TableColumn colsl = new TableColumn("Số lượng");
+        colsl.setCellValueFactory(new PropertyValueFactory("SoLuong"));
+        colsl.setPrefWidth(120);
+        
+        this.tbSach.getColumns().addAll(colid, colname,colmt, colnxb, colsl);
+    }
+    
+    private void loadTableData (String kw) throws SQLException{
+        SachService s = new SachService();
+        List<Sach> k = s.xemThongTinSach(kw);
+        this.tbSach.setItems(FXCollections.observableList(k));
+    }
+    
     private void Reset() {
         txtTen.setText("");
         txtMoTa.setText("");
         txtNXB.setText("");
         txtSoLuong.setText("");
+        cbTheLoai.getSelectionModel().clearSelection();
     }
     
     public void Exit(ActionEvent event) throws Exception {

@@ -10,14 +10,19 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 /**
  *
  * @author Trâm Anh
  */
 public class ThongTin {
+    protected static final SimpleDateFormat f = new  SimpleDateFormat("yyyy-MM-dd");
+    protected static final SimpleDateFormat e = new SimpleDateFormat("dd-mm-yyyy");
+    
     public boolean ThemThongTin( DocGia k) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
@@ -27,11 +32,11 @@ public class ThongTin {
             stm.setInt(1, k.getId());
             stm.setString(2, k.getTen());
             stm.setString(3, k.getGT());
-            stm.setDate(4, (Date.valueOf(k.getNgaySinh())) );
+            stm.setDate(4, (Date.valueOf(k.getNgaySinh1())) );
             stm.setString(5, k.getEmail());
             stm.setString(6, k.getSDT());
             stm.setString(7, k.getDiaChi());
-            stm.setDate(8, (Date.valueOf(k.getNgayDangKi())));
+            stm.setDate(8, (Date.valueOf(k.getNgayDangKi1())));
             stm.setInt(9, k.getDoiTuong());
             stm.setInt(10, k.getBoPhan());
             stm.executeUpdate();
@@ -64,8 +69,10 @@ public class ThongTin {
                 q = new DocGia(
                         rs.getInt("id"),
                         rs.getString("HoTen"),
+                        rs.getDate("NgaySinh"),
                         rs.getString("GioiTinh"),
-                        rs.getString("SoDienThoai"));
+                        rs.getString("SoDienThoai"),
+                        rs.getDate("NgayDangKi"));
                 d.add(q);
             }
         }        

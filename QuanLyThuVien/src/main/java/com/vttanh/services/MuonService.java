@@ -4,13 +4,14 @@
  */
 package com.vttanh.services;
 
-import com.vttanh.pojo.DocGia;
 import com.vttanh.pojo.PhieuMuon;
+import com.vttanh.pojo.PhieuMuonChiTiet;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +20,19 @@ import java.util.List;
  * @author Trâm Anh
  */
 public class MuonService {
-    public boolean themPhieuMuon( PhieuMuon p) throws SQLException {
+    public boolean themPhieuMuonSach( PhieuMuon p) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
-            String sql = "INSERT INTO phieumuon(Ten, NgayMuon, SDT, SoLuong) VALUES(?, ?, ?, ?)";
             
+            String sql = "INSERT INTO phieumuon(id, TenDG, SDT, NgayMuon, SLTong, Khoa, DT) VALUES(?, ?, ?, ?, ?, ?, ?)";            
             PreparedStatement stm = conn.prepareCall(sql);
-            stm.setString(1, p.getTen());
-            stm.setDate(2, (Date.valueOf(p.getNgayMuon())));
+            stm.setInt(1,p.getId());
+            stm.setString(2, p.getTen());
             stm.setString(3, p.getSDT());
-            stm.setString(4, p.getSL());
+            stm.setDate(4, (Date.valueOf(p.getNgayMuon())));
+            stm.setString(5, p.getSL());
+            stm.setInt(6, p.getBoPhan());
+            stm.setInt(7, p.getDoiTuong());
             stm.executeUpdate();
             
             try {
@@ -41,12 +45,50 @@ public class MuonService {
         }
     }
     
+    public List<PhieuMuon> DocID() throws SQLException {
+        List<PhieuMuon> pm = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            Statement stm = conn.createStatement();
+
+            ResultSet rs = stm.executeQuery("SELECT id, TenDG FROM phieumuon");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String Ten = rs.getString("TenDG");
+                pm.add(new PhieuMuon(id, Ten));
+            }
+        }
+        
+        return pm;
+    }
+    
+     public boolean themPhieuMCT( PhieuMuonChiTiet p) throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            conn.setAutoCommit(false);
+            
+            String sql = "INSERT INTO phieumuonchitiet(id, TenSach, SL, id_phieumuon) VALUES(?, ?, ?, ?)";            
+            PreparedStatement stm = conn.prepareCall(sql);
+            stm.setInt(1,p.getId());
+            stm.setString(2, p.getTen());
+            stm.setString(3, p.getSL());
+            stm.setInt(4, p.getId_PhieuMuon());
+            stm.executeUpdate();
+            
+            try {
+                conn.commit();
+                return true;
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+                return false;
+            }
+        }
+    }
+            
     public List<PhieuMuon> xemThongTinPhieuMuon(String kw) throws SQLException {
         List<PhieuMuon> d = new ArrayList<>();
         try (Connection conn = JdbcUtils.getConn()) {
             String sql = "SELECT * FROM phieumuon";
             if (kw != null && !kw.isEmpty())
-                sql += " WHERE Ten like concat('%', ?, '%', '%')";
+                sql += " WHERE TenDG like concat('%', ?)";
             
             PreparedStatement stm = conn.prepareCall(sql);
             if (kw != null && !kw.isEmpty())
@@ -57,13 +99,39 @@ public class MuonService {
                 PhieuMuon q;
                 q = new PhieuMuon(
                         rs.getInt("id"),
-                        rs.getString("Ten"),
-//                        rs.getDate("NgayMuon"),
+                        rs.getString("TenDG"),
                         rs.getString("SDT"),
-                        rs.getString("SoLuong"));
+                        rs.getDate("NgayMuon"),
+                        rs.getString("SLTong"));
                 d.add(q);
             }
         }        
         return d;
     }
+    
+    public List<PhieuMuonChiTiet> ThongTinPMCT(String kw) throws SQLException {
+        List<PhieuMuonChiTiet> d = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            String sql = "SELECT * FROM phieumuonchitiet";
+            if (kw != null && !kw.isEmpty())
+                sql += " WHERE Ten like concat('%', ?)";
+            
+            PreparedStatement stm = conn.prepareCall(sql);
+            if (kw != null && !kw.isEmpty())
+                stm.setString(1, kw);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                PhieuMuonChiTiet p;
+                p = new PhieuMuonChiTiet(
+                        rs.getInt("id"),
+                        rs.getString("TenSach"),
+                        rs.getString("SL"),
+                        rs.getInt("id_phieumuon"));
+                d.add(p);
+            }
+        }        
+        return d;
+    }
+
 }

@@ -7,17 +7,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Trâm Anh
 */
 VBox {
-    -fx-spacing: 10;
+    -fx-spacing: 15;
     -fx-background-color: #E6E6FA;
     -fx-font-family: Tahoma;
 }
 
 HBox {
-    -fx-spacing: 10;
+    -fx-spacing: 15;
 }
 
 Text {
-    -fx-font-size: 50;
+    -fx-font-size: 70;
     -fx-stroke-width: 1;
     -fx-font-weight: bold;
     -fx-padding:10;
@@ -25,6 +25,7 @@ Text {
 
 Button {
     -fx-background-color: white;
+    -fx-font-size: 20;
 } 
 
 Button:hover {

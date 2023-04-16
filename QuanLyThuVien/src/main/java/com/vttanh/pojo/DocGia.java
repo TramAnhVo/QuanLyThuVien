@@ -5,6 +5,7 @@
 package com.vttanh.pojo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -15,23 +16,40 @@ public class DocGia {
     private int id;
     private String Ten;
     private String GT;
-    private LocalDate NgaySinh;
+    private Date NgaySinh;
+    private LocalDate NgaySinh1;
     private String Email;
     private String SDT;
     private String DiaChi;
     private int TrangThai;
-    private LocalDate NgayDangKi;
+    private Date NgayDangKi;
+    private LocalDate NgayDangKi1;
     private int DoiTuong;
     private int BoPhan;
     
+//    {
+//        NgayDangKi = new Date() ;
+//    }
+    
     {
-        NgayDangKi = LocalDate.now();
+        NgayDangKi1 = LocalDate.now();
     }
-
-    public DocGia(String Ten,LocalDate NgaySinh, String GT, String Email, String SDT, String DiaChi, int DoiTuong , int BoPhan) {
+    
+    public DocGia(String Ten,Date NgaySinh, String GT, String Email, String SDT, String DiaChi, int DoiTuong , int BoPhan) {
         this.Ten = Ten;
         this.GT = GT;
         this.NgaySinh = NgaySinh;
+        this.Email = Email;
+        this.SDT = SDT;
+        this.DiaChi = DiaChi;
+        this.BoPhan = BoPhan;
+        this.DoiTuong = DoiTuong;
+    }
+    
+    public DocGia(String Ten, LocalDate NgaySinh1, String GT, String Email, String SDT, String DiaChi, int DoiTuong , int BoPhan) {
+        this.Ten = Ten;
+        this.GT = GT;
+        this.NgaySinh1 = NgaySinh1;
         this.Email = Email;
         this.SDT = SDT;
         this.DiaChi = DiaChi;
@@ -44,11 +62,13 @@ public class DocGia {
         this.Ten = Ten;
     }
     
-    public DocGia(int id,String Ten, String GT, String SDT) {
+    public DocGia(int id, String Ten, Date NgaySinh, String GT, String SDT, Date NgayDangKi) {
         this.id = id;
         this.Ten = Ten;
+        this.NgaySinh = NgaySinh;
         this.GT = GT;
         this.SDT = SDT;
+        this.NgayDangKi = NgayDangKi;
     }
 
     public DocGia() {
@@ -183,29 +203,57 @@ public class DocGia {
     /**
      * @return the NgaySinh
      */
-    public LocalDate getNgaySinh() {
+    public Date getNgaySinh() {
         return NgaySinh;
     }
 
     /**
      * @param NgaySinh the NgaySinh to set
      */
-    public void setNgaySinh(LocalDate NgaySinh) {
+    public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
     }
 
     /**
      * @return the NgayDangKi
      */
-    public LocalDate getNgayDangKi() {
+    public Date getNgayDangKi() {
         return NgayDangKi;
     }
 
     /**
      * @param NgayDangKi the NgayDangKi to set
      */
-    public void setNgayDangKi(LocalDate NgayDangKi) {
+    public void setNgayDangKi(Date NgayDangKi) {
         this.NgayDangKi = NgayDangKi;
+    }
+
+    /**
+     * @return the NgaySinh1
+     */
+    public LocalDate getNgaySinh1() {
+        return NgaySinh1;
+    }
+
+    /**
+     * @param NgaySinh1 the NgaySinh1 to set
+     */
+    public void setNgaySinh1(LocalDate NgaySinh1) {
+        this.NgaySinh1 = NgaySinh1;
+    }
+
+    /**
+     * @return the NgayDangKi1
+     */
+    public LocalDate getNgayDangKi1() {
+        return NgayDangKi1;
+    }
+
+    /**
+     * @param NgayDangKi1 the NgayDangKi1 to set
+     */
+    public void setNgayDangKi1(LocalDate NgayDangKi1) {
+        this.NgayDangKi1 = NgayDangKi1;
     }
     
     

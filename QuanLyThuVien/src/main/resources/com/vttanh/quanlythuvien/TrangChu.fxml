@@ -12,11 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="952.0" stylesheets="@../../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.TrangChuController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1159.0" stylesheets="@../../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.TrangChuController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ THƯ VIỆN" textAlignment="CENTER" wrappingWidth="920.9840698242188">
          <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="20.0" />
          </VBox.margin>
          <font>
             <Font name="Arial" size="36.0" />
@@ -39,9 +39,9 @@
          </fill></Text>
       <HBox alignment="CENTER" prefHeight="241.0" prefWidth="883.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#DangKi" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Đăng kí thông tin">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#DangKi" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí độc giả">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="204.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_3.jpg" />
                      </image>
@@ -51,9 +51,9 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuMuon" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Mượn sách">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuMuon" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí phiếu mượn">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="197.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_1.jpg" />
                      </image>
@@ -63,9 +63,9 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTraSach" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Trả sách">
+            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTra" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí phiếu trả">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="195.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_2.jpg" />
                      </image>
@@ -79,9 +79,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="241.0" prefWidth="883.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#datSach" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Đặt sách ">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#PhieuDat" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí đặt sách">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="194.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_5.jpg" />
                      </image>
@@ -91,9 +91,9 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Thống kê">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ThongKe" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Thống kê">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="199.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_6.png" />
                      </image>
@@ -103,9 +103,9 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#NhapThongTinSach" prefHeight="270.0" prefWidth="270.0" stylesheets="@../../../styles/TrangChu.css" text="Nhập sách">
+            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#NhapThongTinSach" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí sách">
                <graphic>
-                  <ImageView fitHeight="167.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="191.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/image_4.jpg" />
                      </image>

@@ -13,9 +13,6 @@ import com.vttanh.services.DoiTuongServices;
 import com.vttanh.utils.MessageBox;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -80,10 +77,11 @@ public class DangKiController implements Initializable {
         });
     }
     
-    public void DangKiThongTin(ActionEvent evt) {
-        DocGia q = new DocGia(this.txtHoTen.getText(), 
-                this.dateNgaySinh.getValue(), 
-                this.txtGT.getText(),              
+    public void DangKiThongTin(ActionEvent evt) {        
+        DocGia q;
+        q = new DocGia(this.txtHoTen.getText(), 
+                this.dateNgaySinh.getValue(),
+                this.txtGT.getText(),
                 this.txtEmail.getText(),
                 this.txtSDT.getText(),
                 this.txtDiaChi.getText(),
@@ -92,33 +90,68 @@ public class DangKiController implements Initializable {
 
         ThongTin s = new ThongTin();
         try {
-            s.ThemThongTin(q);
-            this.loadTableData(null);
-            MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+//            if ((txtGT.getText() != "Nam") || (txtGT.getText() != "Nữ")  ) {
+//            MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show();
+//            }
+                       
+                s.ThemThongTin(q);
+                this.loadTableData(null);
+                Reset();
+                MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+           
+               MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show(); 
+            
+            //s.ThemThongTin(q);
+            
         } catch (SQLException ex) {
             MessageBox.getBox("Thông báo", "Thêm thông tin thất bại", Alert.AlertType.ERROR).show();
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+//    public void ktGioiTinh() {
+//        if ((txtGT.getText() == "Nam") || (txtGT.getText() == "Nữ")  ) {
+//            //MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show();
+//            txtGT.setText("");
+//        } 
+//    }
+    
+    private void Reset() {
+        txtHoTen.clear();
+        txtEmail.setText("");
+        txtDiaChi.setText("");
+        txtSDT.setText("");
+        txtGT.setText("");
+        cbBoPhan.getSelectionModel().clearSelection();
+        cbDoiTuong.getSelectionModel().clearSelection();
+    }
+    
     private void loadTableColumns() {
         TableColumn colid = new TableColumn("STT");
         colid.setCellValueFactory(new PropertyValueFactory("id"));
-        colid.setPrefWidth(80);
+        colid.setPrefWidth(85);
         
         TableColumn colname = new TableColumn("Họ và tên độc giả");
         colname.setCellValueFactory(new PropertyValueFactory("Ten"));
-        colname.setPrefWidth(200);
+        colname.setPrefWidth(220);
+        
+        TableColumn colns = new TableColumn("Ngày sinh");
+        colns.setCellValueFactory(new PropertyValueFactory("NgaySinh"));
+        colns.setPrefWidth(150);
         
         TableColumn colgt = new TableColumn("Giới tính");
         colgt.setCellValueFactory(new PropertyValueFactory("GT"));
-        colgt.setPrefWidth(100);
+        colgt.setPrefWidth(105);
         
         TableColumn colsdt = new TableColumn("Số điện thoại");
         colsdt.setCellValueFactory(new PropertyValueFactory("SDT"));
         colsdt.setPrefWidth(150);
         
-        this.tbDocGia.getColumns().addAll(colid, colname, colgt,colsdt);
+        TableColumn colndk = new TableColumn("Ngày đăng kí");
+        colndk.setCellValueFactory(new PropertyValueFactory("NgayDangKi"));
+        colndk.setPrefWidth(150);
+        
+        this.tbDocGia.getColumns().addAll(colid, colname,colns, colgt,colsdt, colndk);
     }
     
     private void loadTableData (String kw) throws SQLException{

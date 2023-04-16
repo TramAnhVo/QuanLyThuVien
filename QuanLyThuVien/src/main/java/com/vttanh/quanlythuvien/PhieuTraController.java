@@ -21,11 +21,11 @@ import javafx.stage.Stage;
  */
 public class PhieuTraController implements Initializable {
     @FXML private javafx.scene.control.Button Huy;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
+    }    
     
     public void Exit(ActionEvent event) throws Exception {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -38,5 +38,5 @@ public class PhieuTraController implements Initializable {
                 stage.close();
             }
     }
-    
+        
 }

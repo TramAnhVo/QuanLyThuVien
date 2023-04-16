@@ -20,8 +20,8 @@ public class TrangChuController {
         stage.show();    
     }
     
-    public void PhieuTraSach(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PhieuTra.fxml"));
+    public void PhieuTra(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("TraSach.fxml"));
         
         Parent root = loader.load();
         
@@ -53,8 +53,19 @@ public class TrangChuController {
         stage.show();
     }
 
-     public void datSach(ActionEvent event) throws IOException {
+     public void PhieuDat(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DatSach.fxml"));
+        
+        Parent root = loader.load();
+        
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+     
+     public void ThongKe(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("thongKe.fxml"));
         
         Parent root = loader.load();
         

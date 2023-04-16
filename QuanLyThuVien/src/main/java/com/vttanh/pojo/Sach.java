@@ -24,6 +24,14 @@ public class Sach {
         this.TheLoai = TheLoai;
     }
     
+    public Sach(int id, String Ten, String MoTa, String NXB, String SoLuong) {
+        this.id = id;
+        this.Ten = Ten;
+        this.MoTa = MoTa;
+        this.NXB = NXB;
+        this.SoLuong = SoLuong;
+    }
+    
     public Sach() {
     }
 
