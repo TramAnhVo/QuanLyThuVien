@@ -24,15 +24,11 @@ public class MuonService {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
             
-            String sql = "INSERT INTO phieumuon(id, TenDG, SDT, NgayMuon, SLTong, Khoa, DT) VALUES(?, ?, ?, ?, ?, ?, ?)";            
+            String sql = "INSERT INTO phieumuon VALUES(?, ?, ?, ?)";            
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setInt(1,p.getId());
             stm.setString(2, p.getTen());
-            stm.setString(3, p.getSDT());
-            stm.setDate(4, (Date.valueOf(p.getNgayMuon())));
-            stm.setString(5, p.getSL());
-            stm.setInt(6, p.getBoPhan());
-            stm.setInt(7, p.getDoiTuong());
+            stm.setDate(3, (Date.valueOf(p.getNgayMuon())));
             stm.executeUpdate();
             
             try {
@@ -43,22 +39,6 @@ public class MuonService {
                 return false;
             }
         }
-    }
-    
-    public List<PhieuMuon> DocID() throws SQLException {
-        List<PhieuMuon> pm = new ArrayList<>();
-        try (Connection conn = JdbcUtils.getConn()) {
-            Statement stm = conn.createStatement();
-
-            ResultSet rs = stm.executeQuery("SELECT id, TenDG FROM phieumuon");
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String Ten = rs.getString("TenDG");
-                pm.add(new PhieuMuon(id, Ten));
-            }
-        }
-        
-        return pm;
     }
     
      public boolean themPhieuMCT( PhieuMuonChiTiet p) throws SQLException {

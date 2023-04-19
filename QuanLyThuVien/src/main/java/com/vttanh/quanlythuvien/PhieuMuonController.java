@@ -8,8 +8,7 @@ import com.vttanh.pojo.BoPhan;
 import com.vttanh.pojo.DoiTuong;
 import com.vttanh.pojo.PhieuMuon;
 import com.vttanh.pojo.PhieuMuonChiTiet;
-import com.vttanh.services.BoPhanService;
-import com.vttanh.services.DoiTuongServices;
+import com.vttanh.services.ThongTinChungService;
 import com.vttanh.services.MuonService;
 import com.vttanh.utils.MessageBox;
 import java.net.URL;
@@ -50,28 +49,12 @@ public class PhieuMuonController implements Initializable {
     @FXML private TextField txtSoLuong;
     @FXML private TextField txtTong;
     @FXML private TextField txtSearch;
-    @FXML private ComboBox<BoPhan> cbKhoa;
-    @FXML private ComboBox<DoiTuong> cbDoiTuong;    
-    @FXML private ComboBox<PhieuMuon> cbMaPhieu;
     @FXML private TableView<PhieuMuon> tbPhieuMuon;
     @FXML private TableView<PhieuMuonChiTiet> tbPhieuMuonChiTiet;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
-        DoiTuongServices s = new DoiTuongServices();
-        BoPhanService x = new BoPhanService();
-        MuonService t = new MuonService();
-        
         try {
-            List<DoiTuong> dt = s.getDoiTuongs();           
-            this.cbDoiTuong.setItems(FXCollections.observableList(dt));
-            
-            List<BoPhan> bp = x.getBoPhan();
-            this.cbKhoa.setItems(FXCollections.observableList(bp));
-            
-            List<PhieuMuon> pm = t.DocID();
-            this.cbMaPhieu.setItems(FXCollections.observableList(pm));
-            
             this.loadTableColumns();
             this.loadTableData(null);
             this.loadPhieuChiTiet();
@@ -91,16 +74,13 @@ public class PhieuMuonController implements Initializable {
     } 
     
     public void themPhieuMuon (ActionEvent evt) {
-        PhieuMuon k = new PhieuMuon(this.txtTen.getText(),
-                this.txtSDT.getText(),
-                this.dateNgayMuon.getValue(),               
-                this.txtTong.getText(),
-                this.cbKhoa.getSelectionModel().getSelectedItem().getId(),
-                this.cbDoiTuong.getSelectionModel().getSelectedItem().getId());
+//        PhieuMuon k = new PhieuMuon(this.txtTen.getText(),
+//                this.dateNgayMuon.getValue(),               
+//                this.txtTong.getText());
                
         MuonService s = new MuonService();       
         try {
-            s.themPhieuMuonSach(k);        
+//            s.themPhieuMuonSach(k);        
             this.loadTableData(null);
             MessageBox.getBox("Thông báo", "Thêm phiếu mượn thành công!!", Alert.AlertType.INFORMATION).show();
         } catch (SQLException ex) {
@@ -110,14 +90,14 @@ public class PhieuMuonController implements Initializable {
     }
     
     public void themPhieuChiTiet (ActionEvent evt ) {
-        PhieuMuonChiTiet p = new PhieuMuonChiTiet(
-                this.txtTenSach.getText(),
-                this.txtSoLuong.getText(),
-                this.cbMaPhieu.getSelectionModel().getSelectedItem().getId());
+//        PhieuMuonChiTiet p = new PhieuMuonChiTiet(
+//                this.txtTenSach.getText(),
+//                this.txtSoLuong.getText(),
+//                this.cbMaPhieu.getSelectionModel().getSelectedItem().getId());
         
         MuonService s = new MuonService();       
         try {
-            s.themPhieuMCT(p);        
+//            s.themPhieuMCT(p);        
             this.loadTableData(null);
             txtTenSach.setText("");
             txtSoLuong.setText("");
@@ -196,7 +176,5 @@ public class PhieuMuonController implements Initializable {
         txtTen.setText("");
         txtSDT.setText("");
         txtTong.setText("");
-        cbDoiTuong.getSelectionModel().clearSelection();
-        cbKhoa.getSelectionModel().clearSelection();
     }
 }

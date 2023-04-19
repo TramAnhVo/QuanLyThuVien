@@ -12,18 +12,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="938.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.DangKiController">
   <tabs>
-    <Tab text="Thông tin độc giả">
+    <Tab text="Đăng kí thông tin độc giả">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="882.0">
                <children>
@@ -44,7 +41,7 @@
                         <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN ĐỘC GIẢ" textAlignment="CENTER" wrappingWidth="774.1366455554962">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ĐĂNG KÍ THÔNG TIN ĐỘC GIẢ" textAlignment="CENTER" wrappingWidth="774.1366455554962">
                            <fill>
                               <LinearGradient endX="0.814393881595496" endY="0.7840909163157145" startX="0.0946969696969697" startY="0.21969694079774799">
                                  <stops>
@@ -77,7 +74,7 @@
                         <TextField layoutX="201.0" layoutY="104.0" prefHeight="34.0" prefWidth="468.0" promptText="Họ tên độc giả" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="txtSDT" layoutX="201.0" layoutY="104.0" prefHeight="43.0" prefWidth="599.0" promptText="Số điện thoại" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="txtDiaChi" layoutX="201.0" layoutY="229.0" prefHeight="41.0" prefWidth="599.0" promptText="Địa chỉ liên lạc" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="txtGT" prefHeight="42.0" prefWidth="599.0" promptText="Giới tính " GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cbGioiTinh" prefHeight="41.0" prefWidth="362.0" promptText="Giới tính" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <Button id="btLuu" layoutX="637.0" layoutY="562.0" mnemonicParsing="false" onAction="#DangKiThongTin" prefHeight="50.0" prefWidth="149.0" styleClass="btLuu" text="Lưu thông tin" AnchorPane.bottomAnchor="26.800000000000068" />
@@ -89,30 +86,104 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="864.0">
                <children>
-                  <VBox layoutX="23.0" layoutY="14.0" prefHeight="66.0" prefWidth="832.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
-                     <children>
-                        <Label prefHeight="50.0" prefWidth="527.0" text="Tìm kiếm thông tin" textFill="#d91616" underline="true">
-                           <padding>
-                              <Insets bottom="10.0" left="5.0" />
-                           </padding>
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="41.0" prefWidth="807.0">
-                           <children>
-                              <TextField fx:id="txtSearch" prefHeight="40.0" prefWidth="338.0" promptText="Nhập tên độc giả">
-                                 <HBox.margin>
-                                    <Insets right="2.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <TableView fx:id="tbDocGia" layoutX="20.0" layoutY="109.0" prefHeight="489.0" prefWidth="838.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="120.0" />
+                  <TableView fx:id="tbDocGia" layoutX="20.0" layoutY="38.0" prefHeight="572.0" prefWidth="864.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="38.0" />
                </children></AnchorPane>
       </content>
     </Tab>
+      <Tab text="Tìm kiếm thông tin cá nhân độc giả">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="882.0">
+               <children>
+                  <Text layoutX="66.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN CÁ NHÂN ĐỘC GIẢ" textAlignment="CENTER" wrappingWidth="774.1366455554962" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+                     <fill>
+                        <LinearGradient endX="0.814393881595496" endY="0.7840909163157145" startX="0.0946969696969697" startY="0.21969694079774799">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.05180000141263008" green="0.06664695590734482" blue="0.7400000095367432" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.8500000238418579" green="0.06800000369548798" blue="0.6256548762321472" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Text>
+                  <GridPane layoutX="66.0" layoutY="138.0" prefHeight="435.0" prefWidth="818.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="140.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.20001220703125" minWidth="10.0" prefWidth="129.4000213623047" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="657.5999786376954" minWidth="10.0" prefWidth="657.5999786376954" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="151.0" text="Họ và tên :" GridPane.rowIndex="1" />
+                        <Label layoutX="30.0" layoutY="148.0" prefHeight="20.0" prefWidth="119.0" text="Ngày sinh:" GridPane.rowIndex="2" />
+                        <Label layoutX="30.0" layoutY="148.0" prefHeight="20.0" prefWidth="119.0" text="Ngày đăng kí:" GridPane.rowIndex="3" />
+                        <Label layoutX="30.0" layoutY="173.0" prefHeight="20.0" prefWidth="119.0" text="Hạn thẻ:" GridPane.rowIndex="4" />
+                        <Label layoutX="30.0" layoutY="204.0" prefHeight="20.0" prefWidth="119.0" text="Email:" GridPane.rowIndex="5" />
+                        <Label layoutX="30.0" layoutY="236.0" prefHeight="20.0" prefWidth="119.0" text="Số điện thoại:" GridPane.rowIndex="6" />
+                        <Label layoutX="20.0" layoutY="91.0" prefHeight="18.0" prefWidth="151.0" text="Mã độc giả:" />
+                        <TextField fx:id="txtSearchId" layoutX="219.0" layoutY="80.0" prefHeight="42.0" prefWidth="599.0" promptText="Nhập mã độc giả" GridPane.columnIndex="1" />
+                        <Label fx:id="lbHoTen1" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Họ tên độc giả" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbNgaySinh" layoutX="160.0" layoutY="84.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Ngày sinh " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbNgayDangKi" layoutX="160.0" layoutY="144.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Ngày đăng kí " GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbHanThe" layoutX="160.0" layoutY="84.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Hạn sử dụng" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbEmail1" layoutX="160.0" layoutY="263.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Email độc giả" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbSDT1" layoutX="160.0" layoutY="323.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Số điện thoại liên lạc" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lbDiaChi" layoutX="160.0" layoutY="344.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Địa chỉ liên hệ" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="354.0" prefHeight="20.0" prefWidth="119.0" text="Địa chỉ:" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="156.0" layoutY="99.0" prefHeight="27.0" prefWidth="594.0" text="*****  nhập mã độc giả để xem được thông tin của mỗi độc giả  ******" textFill="#e70606" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="99.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
   </tabs>
 </TabPane>

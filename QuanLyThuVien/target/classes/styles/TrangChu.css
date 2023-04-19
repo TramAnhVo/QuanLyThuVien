@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 VBox {
     -fx-spacing: 15;
-    -fx-background-color: #E6E6FA;
+    -fx-background-color: lightblue;
     -fx-font-family: Tahoma;
 }
 

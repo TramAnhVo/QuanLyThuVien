@@ -2,8 +2,11 @@
  * Empty Stylesheet file.
  */
 
-GridPane {
-    -fx-background-color: #F8F8FF;
+AnchorPane {
+    -fx-background-color: lightblue;
+}
+
+GridPane {  
     -fx-padding: 10;
     -fx-font-family: sans-serif;
     -fx-hgap: 10;
@@ -14,16 +17,17 @@ HBox {
     -fx-spacing: 15;
 }
 
-AnchorPane {
-    -fx-background-color: #F8F8FF;
-}
-
 Label {
     -fx-font-size: 18;
     -fx-font-weight: bold;
 }
 
 TextField,DatePicker,ComboBox{
+    -fx-font-size: 18;
+}
+
+.dt {
+    -fx-background-color:white;
     -fx-font-size: 18;
 }
 

@@ -6,6 +6,7 @@ package com.vttanh.pojo;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -16,51 +17,22 @@ import java.util.Date;
         private String Ten;
         private LocalDate NgayMuon;
         private Date NgayMuon1;
-        private String SDT;
         private String SL;
-        private int BoPhan;
-        private int DoiTuong;
-
+        
+    
+        // nap thong tin len giao dien
         public PhieuMuon(int id, String Ten, String SDT, Date NgayMuon1, String SL) {
             this.id = id;
             this.Ten = Ten;
-            this.SDT = SDT;
             this.NgayMuon1 = NgayMuon1;
-            this.SL = SL;
         }
         
-        public PhieuMuon(int id, String Ten, String SDT, LocalDate NgayMuon, String SL) {
-            this.id = id;
+        // luu thong tin xuong csdl
+        public PhieuMuon( String Ten, LocalDate NgayMuon) {
             this.Ten = Ten;
-            this.SDT = SDT;
             this.NgayMuon = NgayMuon;
-            this.SL = SL;
         }
                 
-        public PhieuMuon(String Ten, String SDT, LocalDate NgayMuon, String SL, int BoPhan, int DoiTuong) {
-            this.Ten = Ten;
-            this.SDT = SDT;
-            this.NgayMuon = NgayMuon;
-            this.SL = SL;
-            this.BoPhan = BoPhan;
-            this.DoiTuong = DoiTuong;
-        }
-        
-        public PhieuMuon(int id, String Ten, String SDT, LocalDate NgayMuon, String SL, int BoPhan, int DoiTuong) {
-            this.id = id;
-            this.Ten = Ten;
-            this.SDT = SDT;
-            this.NgayMuon = NgayMuon;
-            this.SL = SL;
-            this.BoPhan = BoPhan;
-            this.DoiTuong = DoiTuong;
-        }
-        
-        public PhieuMuon(int id, String Ten){
-            this.id = id ;
-            this.Ten = Ten;
-        }
-        
         @Override
         public String toString() {
             return this.getTen();
@@ -112,34 +84,6 @@ import java.util.Date;
     }
 
     /**
-     * @return the SDT
-     */
-    public String getSDT() {
-        return SDT;
-    }
-
-    /**
-     * @param SDT the SDT to set
-     */
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
-    }
-
-    /**
-     * @return the DoiTuong
-     */
-    public int getDoiTuong() {
-        return DoiTuong;
-    }
-
-    /**
-     * @param DoiTuong the DoiTuong to set
-     */
-    public void setDoiTuong(int DoiTuong) {
-        this.DoiTuong = DoiTuong;
-    }
-
-    /**
      * @return the NgayMuon1
      */
     public Date getNgayMuon1() {
@@ -152,21 +96,7 @@ import java.util.Date;
     public void setNgayMuon1(Date NgayMuon1) {
         this.NgayMuon1 = NgayMuon1;
     }
-
-    /**
-     * @return the BoPhan
-     */
-    public int getBoPhan() {
-        return BoPhan;
-    }
-
-    /**
-     * @param BoPhan the BoPhan to set
-     */
-    public void setBoPhan(int BoPhan) {
-        this.BoPhan = BoPhan;
-    }
-
+    
     /**
      * @return the SL
      */

@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,82 +13,98 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="891.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.NhapSachController">
-  <tabs>
-    <Tab text="Quản lí sách">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="851.0" stylesheets="@../../../styles/MuonTra.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.NhapSachController">
+   <children>
+      <Text layoutX="80.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÝ THÔNG TIN SÁCH " wrappingWidth="720.5366287231445">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.8295454635764613" startY="0.12121207786328865">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.11166593432426453" green="0.009499999694526196" blue="0.949999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6595613956451416" green="0.042690057307481766" blue="0.7684210538864136" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <VBox layoutX="64.0" layoutY="115.0" prefHeight="50.0" prefWidth="435.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
                <children>
-                  <Text layoutX="69.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ SÁCH" wrappingWidth="734.9366836547852" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="87.26331634521489">
-                     <fill>
-                        <LinearGradient endX="0.5085227272727272" endY="0.6780303120613097" startX="0.29166666621511633" startY="0.4356060606060606">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.1338011622428894" green="0.061754386872053146" blue="0.9263157844543457" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.691614031791687" green="0.03228070214390755" blue="0.7263157963752747" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Text>
-                  <Button fx:id="Huy" layoutX="417.0" layoutY="401.0" mnemonicParsing="false" onAction="#Exit" prefHeight="51.0" prefWidth="125.0" styleClass="btHuy" text="Hủy" />
-                  <Button layoutX="567.0" layoutY="401.0" mnemonicParsing="false" onAction="#nhapThongTinSach" prefHeight="51.0" prefWidth="160.0" styleClass="btLuu" text="Lưu thông tin" />
-                  <VBox layoutX="105.0" layoutY="94.0" prefHeight="294.0" prefWidth="682.0">
-                     <children>
-                        <HBox prefHeight="60.0" prefWidth="682.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="134.0" text="Tên sách" />
-                              <TextField fx:id="txtTen" prefHeight="40.0" prefWidth="298.0" promptText="Tên sách" />
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="682.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="134.0" text="Mô tả" />
-                              <TextField fx:id="txtMoTa" prefHeight="40.0" prefWidth="297.0" promptText="Mô tả" />
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="57.0" prefHeight="60.0" prefWidth="682.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="134.0" text="Năm xuất bản" />
-                              <TextField fx:id="txtNXB" prefHeight="40.0" prefWidth="209.0" promptText="Năm xuất bản sách" />
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="682.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="133.0" text="Thể loại" />
-                              <ComboBox fx:id="cbTheLoai" prefHeight="40.0" prefWidth="298.0" promptText="Thể loại sách" />
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="130.0" prefHeight="60.0" prefWidth="682.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="134.0" text="Số lượng" />
-                              <TextField fx:id="txtSoLuong" prefHeight="40.0" prefWidth="209.0" promptText="Số lượng sách " />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Thông tin sách">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <Label text="Tìm kiếm" />
+                  <TextField fx:id="txtSearch" prefHeight="40.0" prefWidth="286.0" promptText="Tìm kiếm tên sách" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="tbSach" layoutX="41.0" layoutY="174.0" prefHeight="204.0" prefWidth="777.0" />
+      <VBox layoutX="64.0" layoutY="403.0" prefHeight="50.0" prefWidth="335.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
                <children>
-                  <HBox layoutX="50.0" layoutY="14.0" prefHeight="46.0" prefWidth="630.0">
-                     <children>
-                        <Label text="Tìm kiếm thông tin sách" />
-                        <TextField fx:id="txtSearch" prefHeight="40.0" prefWidth="294.0" />
-                     </children>
-                  </HBox>
-                  <TableView fx:id="tbSach" layoutX="50.0" layoutY="54.0" prefHeight="337.0" prefWidth="811.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="30.0" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
-  </tabs>
-</TabPane>
+                  <Label prefHeight="27.0" prefWidth="91.0" text="Tên sách" />
+                  <TextField fx:id="txtTen" prefHeight="40.0" prefWidth="254.0" promptText="Tên sách " />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="64.0" layoutY="453.0" prefHeight="50.0" prefWidth="335.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="99.0" text="Mô tả" />
+                  <TextField fx:id="txtMoTa" prefHeight="40.0" prefWidth="261.0" promptText="Mô tả sách" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="64.0" layoutY="503.0" prefHeight="50.0" prefWidth="335.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="82.0" text="NXB" />
+                  <TextField fx:id="txtNXB" prefHeight="40.0" prefWidth="246.0" promptText="Năm xuất bản" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="440.0" layoutY="453.0" prefHeight="50.0" prefWidth="327.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="78.0" text="Tác giả" />
+                  <ComboBox fx:id="cbTacGia" prefHeight="40.0" prefWidth="254.0" promptText="Tác giả" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="440.0" layoutY="403.0" prefHeight="50.0" prefWidth="335.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="298.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="70.0" text="Thể loại" />
+                  <ComboBox fx:id="cbTheLoai" prefHeight="40.0" prefWidth="241.0" promptText="Thể loại" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="440.0" layoutY="503.0" prefHeight="50.0" prefWidth="347.0">
+         <children>
+            <HBox prefHeight="42.0" prefWidth="322.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="67.0" text="SL" />
+                  <TextField fx:id="txtSoLuong" prefHeight="40.0" prefWidth="241.0" promptText="Số lượng sách " />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="381.0" layoutY="586.0" mnemonicParsing="false" onAction="#nhapThongTinSach" prefHeight="50.0" prefWidth="164.0" styleClass="btLuu" text="Lưu thông tin" />
+      <Button fx:id="Huy" layoutX="572.0" layoutY="586.0" mnemonicParsing="false" onAction="#Exit" prefHeight="50.0" prefWidth="180.0" styleClass="btHuy" text="Thoát" />
+   </children>
+</AnchorPane>

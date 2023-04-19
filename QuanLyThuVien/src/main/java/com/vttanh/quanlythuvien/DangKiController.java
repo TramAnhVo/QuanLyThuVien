@@ -7,12 +7,14 @@ package com.vttanh.quanlythuvien;
 import com.vttanh.pojo.BoPhan;
 import com.vttanh.pojo.DocGia;
 import com.vttanh.pojo.DoiTuong;
-import com.vttanh.services.BoPhanService;
+import com.vttanh.pojo.GioiTinh;
+import com.vttanh.services.ThongTinChungService;
 import com.vttanh.services.ThongTin;
-import com.vttanh.services.DoiTuongServices;
 import com.vttanh.utils.MessageBox;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -27,6 +29,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,38 +42,48 @@ import javafx.stage.Stage;
  * @author Trâm Anh
  */
 public class DangKiController implements Initializable {
-
+    // đang ki thong tin doc gia 
     @FXML private ComboBox<DoiTuong> cbDoiTuong;
     @FXML private ComboBox<BoPhan> cbBoPhan;
+    @FXML private ComboBox<GioiTinh> cbGioiTinh;
     @FXML private TextField txtHoTen;
-    @FXML private TextField txtGT;
     @FXML private TextField txtEmail;
     @FXML private TextField txtDiaChi;
     @FXML private TextField txtSDT;
     @FXML private DatePicker dateNgaySinh;
+    // nap thong tin doc gia
+    @FXML private Label lbHoTen1;
+    @FXML private Label lbHanThe;
+    @FXML private Label lbSDT1;
+    @FXML private Label lbEmail1;
+    @FXML private Label lbNgayDangKi;
+    @FXML private Label lbNgaySinh;
+    @FXML private Label lbDiaChi;
+    // cac chuc nang
     @FXML private Button btHuy;
-    @FXML private TextField txtSearch;
+    @FXML private TextField txtSearchId;
     @FXML private TableView<DocGia> tbDocGia;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DoiTuongServices s = new DoiTuongServices();
-        BoPhanService x = new BoPhanService();
+        ThongTinChungService s = new ThongTinChungService();
         try {
             List<DoiTuong> dt = s.getDoiTuongs();           
             this.cbDoiTuong.setItems(FXCollections.observableList(dt));
-            List<BoPhan> bp = x.getBoPhan();
+            List<BoPhan> bp = s.getBoPhan();
             this.cbBoPhan.setItems(FXCollections.observableList(bp));
+            List<GioiTinh> gt = s.getGioiTinh();
+            this.cbGioiTinh.setItems(FXCollections.observableList(gt));
             
             this.loadTableColumns();
-            this.loadTableData(null);
+            this.loadTableData();
         } catch (SQLException ex) {
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        this.txtSearch.textProperty().addListener(d -> {
+        this.txtSearchId.textProperty().addListener(f -> {
             try {
-                this.loadTableData(this.txtSearch.getText());
+                this.loadThongTinCaNhan(this.txtSearchId.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -81,7 +94,7 @@ public class DangKiController implements Initializable {
         DocGia q;
         q = new DocGia(this.txtHoTen.getText(), 
                 this.dateNgaySinh.getValue(),
-                this.txtGT.getText(),
+                this.cbGioiTinh.getSelectionModel().getSelectedItem().getId(),
                 this.txtEmail.getText(),
                 this.txtSDT.getText(),
                 this.txtDiaChi.getText(),
@@ -90,38 +103,34 @@ public class DangKiController implements Initializable {
 
         ThongTin s = new ThongTin();
         try {
-//            if ((txtGT.getText() != "Nam") || (txtGT.getText() != "Nữ")  ) {
-//            MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show();
-//            }
-                       
-                s.ThemThongTin(q);
-                this.loadTableData(null);
-                Reset();
-                MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
-           
-               MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show(); 
-            
-            //s.ThemThongTin(q);
-            
+            if ((txtHoTen.getText().isEmpty()) || (txtDiaChi.getText().isEmpty()) || (txtEmail.getText().isEmpty())) {
+                MessageBox.getBox("Thông báo", "Bạn chưa nhập thông tin!!!", Alert.AlertType.ERROR).show();
+            }
+            else 
+            {
+                if ( txtSDT.getLength() == 10 ) {
+                    s.ThemThongTin(q);
+                    Reset();
+                    MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();                
+                }
+                else 
+                {
+                    MessageBox.getBox("Thông báo", "Nhập thông tin số điện thoại sai!!!", Alert.AlertType.ERROR).show();            
+                } 
+            }
+                     
         } catch (SQLException ex) {
             MessageBox.getBox("Thông báo", "Thêm thông tin thất bại", Alert.AlertType.ERROR).show();
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-//    public void ktGioiTinh() {
-//        if ((txtGT.getText() == "Nam") || (txtGT.getText() == "Nữ")  ) {
-//            //MessageBox.getBox("Thông báo", "Nhập thông tin sai", Alert.AlertType.ERROR).show();
-//            txtGT.setText("");
-//        } 
-//    }
-    
     private void Reset() {
         txtHoTen.clear();
-        txtEmail.setText("");
-        txtDiaChi.setText("");
-        txtSDT.setText("");
-        txtGT.setText("");
+        txtEmail.clear();
+        txtDiaChi.clear();
+        txtSDT.clear();
+        cbGioiTinh.getSelectionModel().clearSelection();
         cbBoPhan.getSelectionModel().clearSelection();
         cbDoiTuong.getSelectionModel().clearSelection();
     }
@@ -136,7 +145,7 @@ public class DangKiController implements Initializable {
         colname.setPrefWidth(220);
         
         TableColumn colns = new TableColumn("Ngày sinh");
-        colns.setCellValueFactory(new PropertyValueFactory("NgaySinh"));
+        colns.setCellValueFactory(new PropertyValueFactory("NgaySinh1"));
         colns.setPrefWidth(150);
         
         TableColumn colgt = new TableColumn("Giới tính");
@@ -151,13 +160,43 @@ public class DangKiController implements Initializable {
         colndk.setCellValueFactory(new PropertyValueFactory("NgayDangKi"));
         colndk.setPrefWidth(150);
         
-        this.tbDocGia.getColumns().addAll(colid, colname,colns, colgt,colsdt, colndk);
+        TableColumn colht = new TableColumn("Hạn thẻ");
+        colht.setCellValueFactory(new PropertyValueFactory("HanThe"));
+        colht.setPrefWidth(150);
+        
+        this.tbDocGia.getColumns().addAll(colid, colname,colns, colgt,colsdt, colndk, colht);
     }
     
-    private void loadTableData (String kw) throws SQLException{
+    private void loadTableData () throws SQLException{
         ThongTin s = new ThongTin();
-        List<DocGia> k = s.xemThongTinDocGia(kw);
+        List<DocGia> k = s.xemThongTinDocGia();
         this.tbDocGia.setItems(FXCollections.observableList(k));
+    }
+    
+    public void loadThongTinCaNhan(String kw) throws SQLException {
+        int mdg = Integer.parseInt(kw);
+        ThongTin s = new ThongTin();
+        
+        String ten = s.TimkiemThongTinDocGia(mdg).get(0).getTen();
+        Date ns = s.TimkiemThongTinDocGia(mdg).get(0).getNgaySinh1();
+        String email = s.TimkiemThongTinDocGia(mdg).get(0).getEmail();
+        String sdt = s.TimkiemThongTinDocGia(mdg).get(0).getSDT();
+        String dc = s.TimkiemThongTinDocGia(mdg).get(0).getDiaChi();
+        Date ndk = s.TimkiemThongTinDocGia(mdg).get(0).getNgayDangKi1();
+        Date ht = s.TimkiemThongTinDocGia(mdg).get(0).getHanThe1();
+        
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        String ngSinh = f.format(ns);
+        String ngDKi = f.format(ndk);
+        String HanThe = f.format(ht);
+        
+        lbHoTen1.setText(ten);
+        lbNgaySinh.setText(ngSinh);
+        lbEmail1.setText(email);
+        lbSDT1.setText(sdt);
+        lbDiaChi.setText(dc);
+        lbNgayDangKi.setText(ngDKi);
+        lbHanThe.setText(HanThe);
     }
         
     public void Exit(ActionEvent event) throws Exception {

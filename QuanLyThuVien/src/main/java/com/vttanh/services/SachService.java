@@ -21,7 +21,7 @@ public class SachService {
         try (Connection conn = JdbcUtils.getConn()) {
             conn.setAutoCommit(false);
             
-           String sql = "INSERT INTO sach(id, Ten, MoTa, NXB, SoLuong, id_theloai) VALUES(?, ?, ?, ?, ?, ?)";
+           String sql = "INSERT INTO sach(id, Ten, MoTa, NXB, SoLuong, id_theloai, id_tacgia) VALUES(?, ?, ?, ?, ?, ?, ?)";
            PreparedStatement stm = conn.prepareCall(sql);
            stm.setInt(1, s.getId());
            stm.setString(2, s.getTen());
@@ -29,6 +29,7 @@ public class SachService {
            stm.setString(4, s.getNXB());
            stm.setString(5, s.getSoLuong());
            stm.setInt(6,s.getTheLoai());
+           stm.setInt(7,s.getTacGia());
            stm.executeUpdate();
            
           try {

@@ -14,7 +14,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1159.0" stylesheets="@../../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.TrangChuController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ THƯ VIỆN" textAlignment="CENTER" wrappingWidth="920.9840698242188">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QUẢN LÍ THƯ VIỆN" textAlignment="CENTER" wrappingWidth="1080.984130859375">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin>
@@ -26,12 +26,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.42056921124458313" green="0.05460000038146973" blue="0.9100000262260437" />
+                        <Color red="0.5700617432594299" green="0.2629629671573639" blue="1.0" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.06859999895095825" green="0.6846047043800354" blue="0.9800000190734863" />
+                        <Color red="0.10445467382669449" green="0.06859999895095825" blue="0.9800000190734863" />
                      </color>
                   </Stop>
                </stops>

@@ -5,9 +5,10 @@
 package com.vttanh.quanlythuvien;
 
 import com.vttanh.pojo.Sach;
+import com.vttanh.pojo.TacGia;
 import com.vttanh.pojo.TheLoai;
 import com.vttanh.services.SachService;
-import com.vttanh.services.TheLoaiService;
+import com.vttanh.services.ThongTinChungService;
 import com.vttanh.utils.MessageBox;
 import java.net.URL;
 import java.sql.SQLException;
@@ -44,15 +45,19 @@ public class NhapSachController implements Initializable {
     @FXML private TextField txtSoLuong;
     @FXML private TextField txtSearch;
     @FXML private ComboBox <TheLoai> cbTheLoai;
+    @FXML private ComboBox <TacGia> cbTacGia;
     @FXML private TableView<Sach> tbSach; 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TheLoaiService t = new TheLoaiService();
+        ThongTinChungService t = new ThongTinChungService();
          
         try {
             List<TheLoai> tl = t.getTheLoai();
             this.cbTheLoai.setItems(FXCollections.observableList(tl));
+            
+            List<TacGia> tg = t.getTacGia();
+            this.cbTacGia.setItems(FXCollections.observableList(tg));
             
             this.loadTableColumns();
             this.loadTableData(null);
@@ -74,14 +79,22 @@ public class NhapSachController implements Initializable {
                 this.txtMoTa.getText(),
                 this.txtNXB.getText(),
                 this.txtSoLuong.getText(),
-                this.cbTheLoai.getSelectionModel().getSelectedItem().getId());
+                this.cbTheLoai.getSelectionModel().getSelectedItem().getId(),
+                this.cbTacGia.getSelectionModel().getSelectedItem().getId());
                 
         SachService p = new SachService();
         try {
-            p.themSach(s);
-            this.loadTableData(null);
-            MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
-            Reset();
+            if ((txtTen.getText().isEmpty()) || (txtMoTa.getText().isEmpty()) || (txtNXB.getText().isEmpty()) || (txtSoLuong.getText().isEmpty()))
+            {
+               MessageBox.getBox("Thông báo", "Bạn chưa nhập thông tin!!!", Alert.AlertType.ERROR).show();
+            }
+            else
+            {
+                p.themSach(s);
+                this.loadTableData(null);
+                MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+                Reset();
+            }
         } catch (SQLException ex) {
             MessageBox.getBox("Thông báo", "Thêm thông tin thất bại", Alert.AlertType.ERROR).show();
             Logger.getLogger(NhapSachController.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,7 +108,7 @@ public class NhapSachController implements Initializable {
         
         TableColumn colname = new TableColumn("Tên sách");
         colname.setCellValueFactory(new PropertyValueFactory("Ten"));
-        colname.setPrefWidth(220);
+        colname.setPrefWidth(300);
         
         TableColumn colmt = new TableColumn("Mô tả");
         colmt.setCellValueFactory(new PropertyValueFactory("MoTa"));
@@ -103,11 +116,11 @@ public class NhapSachController implements Initializable {
         
         TableColumn colnxb = new TableColumn("NXB");
         colnxb.setCellValueFactory(new PropertyValueFactory("NXB"));
-        colnxb.setPrefWidth(100);
+        colnxb.setPrefWidth(90);
         
         TableColumn colsl = new TableColumn("Số lượng");
         colsl.setCellValueFactory(new PropertyValueFactory("SoLuong"));
-        colsl.setPrefWidth(120);
+        colsl.setPrefWidth(90);
         
         this.tbSach.getColumns().addAll(colid, colname,colmt, colnxb, colsl);
     }
@@ -124,6 +137,7 @@ public class NhapSachController implements Initializable {
         txtNXB.setText("");
         txtSoLuong.setText("");
         cbTheLoai.getSelectionModel().clearSelection();
+        cbTacGia.getSelectionModel().clearSelection();
     }
     
     public void Exit(ActionEvent event) throws Exception {

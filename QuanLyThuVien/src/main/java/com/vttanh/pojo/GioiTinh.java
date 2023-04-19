@@ -8,16 +8,16 @@ package com.vttanh.pojo;
  *
  * @author Trâm Anh
  */
-public class TacGia {
+public class GioiTinh {
     private int id;
     private String Ten;
 
-    public TacGia(int id, String Ten) {
+    public GioiTinh(int id, String Ten) {
         this.id = id;
         this.Ten = Ten;
     }
 
-    public TacGia() {
+    public GioiTinh() {
     }
 
     @Override
@@ -52,6 +52,4 @@ public class TacGia {
     public void setTen(String Ten) {
         this.Ten = Ten;
     }
-
- 
 }

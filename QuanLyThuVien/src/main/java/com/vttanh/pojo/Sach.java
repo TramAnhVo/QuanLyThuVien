@@ -9,21 +9,24 @@ package com.vttanh.pojo;
  * @author Trâm Anh
  */
 public class Sach {
+
     private int id;
     private String Ten;
     private String MoTa;
     private String NXB;
     private String SoLuong;
     private int TheLoai;
-    
-    public Sach(String Ten, String MoTa, String NXB, String SoLuong, int TheLoai) {
+    private int TacGia;
+
+    public Sach(String Ten, String MoTa, String NXB, String SoLuong, int TheLoai, int TacGia) {
         this.Ten = Ten;
         this.MoTa = MoTa;
         this.NXB = NXB;
         this.SoLuong = SoLuong;
         this.TheLoai = TheLoai;
+        this.TacGia = TacGia;
     }
-    
+
     public Sach(int id, String Ten, String MoTa, String NXB, String SoLuong) {
         this.id = id;
         this.Ten = Ten;
@@ -31,7 +34,7 @@ public class Sach {
         this.NXB = NXB;
         this.SoLuong = SoLuong;
     }
-    
+
     public Sach() {
     }
 
@@ -103,7 +106,7 @@ public class Sach {
      */
     public void setSoLuong(String SoLuong) {
         this.SoLuong = SoLuong;
-    }    
+    }
 
     /**
      * @return the TheLoai
@@ -119,5 +122,18 @@ public class Sach {
         this.TheLoai = TheLoai;
     }
 
-        
+    /**
+     * @return the TacGia
+     */
+    public int getTacGia() {
+        return TacGia;
+    }
+
+    /**
+     * @param TacGia the TacGia to set
+     */
+    public void setTacGia(int TacGia) {
+        this.TacGia = TacGia;
+    }
+
 }
