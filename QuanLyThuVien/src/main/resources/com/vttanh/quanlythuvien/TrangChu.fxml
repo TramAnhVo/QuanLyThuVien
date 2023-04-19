@@ -39,7 +39,7 @@
          </fill></Text>
       <HBox alignment="CENTER" prefHeight="241.0" prefWidth="883.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#DangKi" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí độc giả">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#DangKi" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lý độc giả">
                <graphic>
                   <ImageView fitHeight="204.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuMuon" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí phiếu mượn">
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuMuon" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lý phiếu mượn">
                <graphic>
                   <ImageView fitHeight="197.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +63,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTra" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí phiếu trả">
+            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#PhieuTra" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lý phiếu trả">
                <graphic>
                   <ImageView fitHeight="195.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="241.0" prefWidth="883.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#PhieuDat" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí đặt sách">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#PhieuDat" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lý đặt sách">
                <graphic>
                   <ImageView fitHeight="194.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +103,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#NhapThongTinSach" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lí sách">
+            <Button contentDisplay="TOP" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#NhapThongTinSach" prefHeight="350.0" prefWidth="350.0" stylesheets="@../../../styles/TrangChu.css" text="Quản lý sách">
                <graphic>
                   <ImageView fitHeight="191.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                      <image>

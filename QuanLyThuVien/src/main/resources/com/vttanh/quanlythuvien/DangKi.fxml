@@ -20,7 +20,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="938.0" stylesheets="@../../../styles/MuonTra.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.DangKiController">
   <tabs>
-    <Tab text="Đăng kí thông tin độc giả">
+    <Tab text="Đăng ký thông tin độc giả">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="882.0">
                <children>
@@ -41,7 +41,7 @@
                         <RowConstraints maxHeight="92.5999969482422" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ĐĂNG KÍ THÔNG TIN ĐỘC GIẢ" textAlignment="CENTER" wrappingWidth="774.1366455554962">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ĐĂNG KÝ THÔNG TIN ĐỘC GIẢ" textAlignment="CENTER" wrappingWidth="774.1366455554962">
                            <fill>
                               <LinearGradient endX="0.814393881595496" endY="0.7840909163157145" startX="0.0946969696969697" startY="0.21969694079774799">
                                  <stops>
@@ -130,7 +130,7 @@
                      <children>
                         <Label prefHeight="18.0" prefWidth="151.0" text="Họ và tên :" GridPane.rowIndex="1" />
                         <Label layoutX="30.0" layoutY="148.0" prefHeight="20.0" prefWidth="119.0" text="Ngày sinh:" GridPane.rowIndex="2" />
-                        <Label layoutX="30.0" layoutY="148.0" prefHeight="20.0" prefWidth="119.0" text="Ngày đăng kí:" GridPane.rowIndex="3" />
+                        <Label layoutX="30.0" layoutY="148.0" prefHeight="22.0" prefWidth="126.0" text="Ngày đăng ký:" GridPane.rowIndex="3" />
                         <Label layoutX="30.0" layoutY="173.0" prefHeight="20.0" prefWidth="119.0" text="Hạn thẻ:" GridPane.rowIndex="4" />
                         <Label layoutX="30.0" layoutY="204.0" prefHeight="20.0" prefWidth="119.0" text="Email:" GridPane.rowIndex="5" />
                         <Label layoutX="30.0" layoutY="236.0" prefHeight="20.0" prefWidth="119.0" text="Số điện thoại:" GridPane.rowIndex="6" />
@@ -149,7 +149,7 @@
                               <Insets left="20.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="lbNgayDangKi" layoutX="160.0" layoutY="144.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Ngày đăng kí " GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="lbNgayDangKi" layoutX="160.0" layoutY="144.0" prefHeight="42.0" prefWidth="658.0" styleClass="dt" text="Ngày đăng ký" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <padding>
                               <Insets left="20.0" />
                            </padding>

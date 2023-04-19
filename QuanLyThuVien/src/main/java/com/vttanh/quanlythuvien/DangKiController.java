@@ -111,6 +111,7 @@ public class DangKiController implements Initializable {
                 if ( txtSDT.getLength() == 10 ) {
                     s.ThemThongTin(q);
                     Reset();
+                    loadTableData();
                     MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();                
                 }
                 else 
