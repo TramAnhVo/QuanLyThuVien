@@ -10,6 +10,7 @@ D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\DatSach.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\utils\MessageBox.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\Sach.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\quanlythuvien\DangKiController.java
+D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\services\PhieuTraService.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\quanlythuvien\PhieuMuonController.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\services\JdbcUtils.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\TheLoai.java
@@ -21,6 +22,7 @@ D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\PhieuMuonChi
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\services\ThongTinChungService.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\PhieuTra.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\pojo\DocGia.java
+D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\services\PhieuMuonChiTietService.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\module-info.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\quanlythuvien\DatSachController.java
 D:\Github\QuanLyThuVien\QuanLyThuVien\src\main\java\com\vttanh\quanlythuvien\TrangChuController.java

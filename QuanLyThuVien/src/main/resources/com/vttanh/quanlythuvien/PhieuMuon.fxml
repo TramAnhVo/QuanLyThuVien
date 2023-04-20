@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
@@ -13,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="936.0" stylesheets="@../../../styles/MuonTra.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="936.0" stylesheets="@../../../styles/MuonTra.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vttanh.quanlythuvien.PhieuMuonController">
    <children>
       <VBox layoutX="27.0" layoutY="13.0" prefHeight="58.0" prefWidth="932.0">
          <children>
@@ -23,7 +21,7 @@
       </VBox>
       <VBox layoutX="27.0" layoutY="88.0" prefHeight="194.0" prefWidth="896.0">
          <children>
-            <TableView prefHeight="186.0" prefWidth="878.0" />
+            <TableView fx:id="tbPhieuMuon" prefHeight="186.0" prefWidth="878.0" />
          </children>
       </VBox>
       <GridPane layoutX="99.0" layoutY="282.0" prefHeight="132.0" prefWidth="823.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="63.0">
@@ -43,18 +41,17 @@
             <Label prefHeight="18.0" prefWidth="147.0" text="Tên độc giả" />
             <Label layoutX="10.0" layoutY="47.0" prefHeight="18.0" prefWidth="147.0" text="Ngày mượn" GridPane.rowIndex="1" />
             <Label layoutX="10.0" layoutY="77.0" prefHeight="18.0" prefWidth="147.0" text="Số lượng" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker prefHeight="34.0" prefWidth="238.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label layoutX="20.0" layoutY="134.0" prefHeight="18.0" prefWidth="147.0" text="Mã sách" GridPane.rowIndex="2" />
-            <TextField layoutX="608.0" layoutY="128.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Label layoutX="20.0" layoutY="25.0" prefHeight="18.0" prefWidth="147.0" text="Khoa" GridPane.columnIndex="3" />
-            <ComboBox prefHeight="34.0" prefWidth="226.0" GridPane.columnIndex="4" />
-            <Label layoutX="431.0" layoutY="20.0" prefHeight="18.0" prefWidth="147.0" text="Đối tượng" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ComboBox layoutX="548.0" layoutY="19.0" prefHeight="34.0" prefWidth="227.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="txtTen" GridPane.columnIndex="1" />
+            <TextField fx:id="txtTenSach" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dateNgayMuon" prefHeight="34.0" prefWidth="238.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="20.0" layoutY="134.0" prefHeight="18.0" prefWidth="147.0" text="Tên sách" GridPane.rowIndex="2" />
+            <TextField fx:id="txtSoLuong" layoutX="608.0" layoutY="128.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label layoutX="20.0" layoutY="25.0" prefHeight="18.0" prefWidth="147.0" text="Mã Độc giả" GridPane.columnIndex="3" />
+            <TextField fx:id="txtid" layoutX="548.0" layoutY="59.0" GridPane.columnIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="516.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="134.0" styleClass="btLuu" text="Thêm " />
-      <Button layoutX="671.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="134.0" styleClass="btHuy" text="Thoát" />
+      <Button layoutX="516.0" layoutY="438.0" mnemonicParsing="false" onAction="#themPhieuChiTiet" prefHeight="51.0" prefWidth="134.0" styleClass="btLuu" text="Lưu" />
+      <Button fx:id="Huy" layoutX="671.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="134.0" styleClass="btHuy" text="Thoát" />
+      <Button layoutX="358.0" layoutY="438.0" mnemonicParsing="false" onAction="#themPhieuMuon" prefHeight="51.0" prefWidth="134.0" styleClass="btLuu" text="Thêm " />
    </children>
 </AnchorPane>

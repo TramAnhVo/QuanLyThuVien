@@ -126,6 +126,7 @@ public class NhapSachController implements Initializable {
     }
     
     private void loadTableData (String kw) throws SQLException{
+        
         SachService s = new SachService();
         List<Sach> k = s.xemThongTinSach(kw);
         this.tbSach.setItems(FXCollections.observableList(k));

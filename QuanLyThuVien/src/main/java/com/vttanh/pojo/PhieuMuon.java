@@ -7,32 +7,56 @@ package com.vttanh.pojo;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  *
  * @author Trâm Anh
  */
     public class PhieuMuon {
-        private int id;
+        private String id;
         private String Ten;
         private LocalDate NgayMuon;
         private Date NgayMuon1;
-        private String SL;
+        private int trangThai;
+        private int id_DocGia;
         
-    
-        // nap thong tin len giao dien
-        public PhieuMuon(int id, String Ten, String SDT, Date NgayMuon1, String SL) {
+        {
+            LocalDate ngay = LocalDate.now(); 
+            setNgayMuon(ngay);
+            String s = (UUID.randomUUID().toString());
+            id = s.substring(0, 10);
+        }
+        
+           public PhieuMuon( String id, Date NgayMuon) {
+               this.id=id;
+            this.NgayMuon1 = NgayMuon;
+      
+        }
+        
+        // lay xuong csdl
+        public PhieuMuon( String Ten, LocalDate NgayMuon, int trangThai, int id_DocGia) {
+            this.Ten = Ten;
+            this.NgayMuon = NgayMuon;
+            this.trangThai = trangThai;
+            this.id_DocGia = id_DocGia;
+        }
+        
+        // lay len giao dien
+         public PhieuMuon( String Ten, Date NgayMuon1, int trangThai) {
+            this.Ten = Ten;
+            this.NgayMuon1 = NgayMuon1;
+            this.trangThai = trangThai;
+        }
+ 
+        public PhieuMuon(String id, String Ten, Date NgayMuon1, int trangThai, int id_DocGia) {
             this.id = id;
             this.Ten = Ten;
             this.NgayMuon1 = NgayMuon1;
+            this.trangThai = trangThai;
+            this.id_DocGia = id_DocGia;
         }
         
-        // luu thong tin xuong csdl
-        public PhieuMuon( String Ten, LocalDate NgayMuon) {
-            this.Ten = Ten;
-            this.NgayMuon = NgayMuon;
-        }
-                
         @Override
         public String toString() {
             return this.getTen();
@@ -44,14 +68,14 @@ import java.util.Random;
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -82,7 +106,7 @@ import java.util.Random;
     public void setNgayMuon(LocalDate NgayMuon) {
         this.NgayMuon = NgayMuon;
     }
-
+    
     /**
      * @return the NgayMuon1
      */
@@ -96,20 +120,33 @@ import java.util.Random;
     public void setNgayMuon1(Date NgayMuon1) {
         this.NgayMuon1 = NgayMuon1;
     }
-    
+
     /**
-     * @return the SL
+     * @return the trangThai
      */
-    public String getSL() {
-        return SL;
+    public int getTrangThai() {
+        return trangThai;
     }
 
     /**
-     * @param SL the SL to set
+     * @param trangThai the trangThai to set
      */
-    public void setSL(String SL) {
-        this.SL = SL;
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
     }
-        
-        
+    
+    
+    /**
+     * @return the id_DocGia
+     */
+    public int getId_DocGia() {
+        return id_DocGia;
+    }
+
+    /**
+     * @param id_DocGia the id_DocGia to set
+     */
+    public void setId_DocGia(int id_DocGia) {
+        this.id_DocGia = id_DocGia;
+    }  
 }

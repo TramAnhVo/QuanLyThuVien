@@ -99,4 +99,58 @@ public class ThongTin {
         } 
         return d;
     }
+    
+    public List<DocGia> xemThongTinDocGiaByID(int id) throws SQLException {
+        List<DocGia> d = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            String sql = "SELECT * FROM docgia";
+                sql += " WHERE id = ?";
+                
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1, id);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                DocGia q;
+                q = new DocGia(
+                        rs.getInt("id"),
+                        rs.getString("HoTen"),
+                        rs.getDate("NgaySinh"),
+                        rs.getInt("GioiTinh"),
+                        rs.getString("SoDienThoai"),
+                        rs.getDate("NgayDangKi"),
+                        rs.getDate("HanThe"));
+                d.add(q);
+            }
+        }        
+        return d;
+    }
+    
+    public List<DocGia> xemThongTinDocGia(String kw) throws SQLException {
+        List<DocGia> d = new ArrayList<>();
+        try (Connection conn = JdbcUtils.getConn()) {
+            String sql = "SELECT * FROM docgia";
+            if (kw != null && !kw.isEmpty())
+                sql += " WHERE HoTen like concat('%', ?)";
+            
+            PreparedStatement stm = conn.prepareCall(sql);
+            if (kw != null && !kw.isEmpty())
+                stm.setString(1, kw);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                DocGia q;
+                q = new DocGia(
+                        rs.getInt("id"),
+                        rs.getString("HoTen"),
+                        rs.getDate("NgaySinh"),
+                        rs.getInt("GioiTinh"),
+                        rs.getString("SoDienThoai"),
+                        rs.getDate("NgayDangKi"),
+                        rs.getDate("HanThe"));
+                d.add(q);
+            }
+        }        
+        return d;
+    }
 }

@@ -97,7 +97,7 @@ CREATE TABLE `docgia` (
   CONSTRAINT `id_BP` FOREIGN KEY (`BoPhan`) REFERENCES `bophan` (`id`),
   CONSTRAINT `id_DT` FOREIGN KEY (`DoiTuong`) REFERENCES `doituong` (`id`),
   CONSTRAINT `id_GT` FOREIGN KEY (`GioiTinh`) REFERENCES `gioitinh` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `docgia` (
 
 LOCK TABLES `docgia` WRITE;
 /*!40000 ALTER TABLE `docgia` DISABLE KEYS */;
-INSERT INTO `docgia` VALUES (3,'Nguyễn Văn B',1,'2003-07-11','vanb@gmail.com','0798476917','371 Nguyễn Kiệm','2023-04-17','2024-04-17',1,3),(4,'Trần Vân Anh ',2,'2001-08-12','vananh@gmail.com','0798475974','12/4/5 Cách Mạng Tháng Tám','2023-04-17','2024-04-17',1,6),(5,'Trần Văn Ba',1,'1992-01-28','vanba@gmail.com','0798475997','123 Võ Văn Tần','2023-04-17','2024-04-17',2,4),(6,'Nguyễn Vân Anh',1,'2003-04-13','ngvannh@gmail.com','0798456128','45/1 Võ Văn Kiệt','2023-04-18','2024-04-18',1,1),(7,'Trần Bích Vân',2,'2003-08-12','bichvan@gmail.com','0981981479','134 Nguyễn Kiệm','2023-04-18','2024-04-18',1,1),(8,'Nguyễn Thị Ngọc Châu',2,'2023-04-13','chau@gmail.com','0798475471','45/1A An Dương Vương','2023-04-18','2024-04-18',1,1);
+INSERT INTO `docgia` VALUES (3,'Nguyễn Văn B',1,'2003-07-11','vanb@gmail.com','0798476917','371 Nguyễn Kiệm','2023-04-17','2024-04-17',1,3),(4,'Trần Vân Anh ',2,'2001-08-12','vananh@gmail.com','0798475974','12/4/5 Cách Mạng Tháng Tám','2023-04-17','2024-04-17',1,6),(5,'Trần Văn Ba',1,'1992-01-28','vanba@gmail.com','0798475997','123 Võ Văn Tần','2023-04-17','2024-04-17',2,4),(6,'Nguyễn Vân Anh',1,'2003-04-13','ngvannh@gmail.com','0798456128','45/1 Võ Văn Kiệt','2023-04-18','2024-04-18',1,1),(7,'Trần Bích Vân',2,'2003-08-12','bichvan@gmail.com','0981981479','134 Nguyễn Kiệm','2023-04-18','2024-04-18',1,1),(8,'Nguyễn Thị Ngọc Châu',2,'2023-04-13','chau@gmail.com','0798475471','45/1A An Dương Vương','2023-04-18','2024-04-18',1,1),(9,'Nguyễn Ngọc Huyền Trân',2,'2023-04-19','ngngochuyentran@gmail.com','0335624678','Bình Tân','2023-04-19','2024-04-19',1,2);
 /*!40000 ALTER TABLE `docgia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,6 +157,97 @@ LOCK TABLES `gioitinh` WRITE;
 /*!40000 ALTER TABLE `gioitinh` DISABLE KEYS */;
 INSERT INTO `gioitinh` VALUES (1,'Nam'),(2,'Nữ');
 /*!40000 ALTER TABLE `gioitinh` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phieumuon`
+--
+
+DROP TABLE IF EXISTS `phieumuon`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `phieumuon` (
+  `id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `NgayMuon` date NOT NULL,
+  `TrangThai` int NOT NULL,
+  `id_docgia` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `id_docgia` (`id_docgia`),
+  CONSTRAINT `pm_ibfk_1` FOREIGN KEY (`id_docgia`) REFERENCES `docgia` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phieumuon`
+--
+
+LOCK TABLES `phieumuon` WRITE;
+/*!40000 ALTER TABLE `phieumuon` DISABLE KEYS */;
+INSERT INTO `phieumuon` VALUES ('704f837d-c','Nguyễn Văn B','2023-04-05',0,3);
+/*!40000 ALTER TABLE `phieumuon` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phieumuonchitiet`
+--
+
+DROP TABLE IF EXISTS `phieumuonchitiet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `phieumuonchitiet` (
+  `id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TenSach` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SoLuongMuon` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SoLuongChuaTra` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idPhieuMuon` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TrangThai` int NOT NULL,
+  `id_sach` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `idPhieuMuon` (`idPhieuMuon`),
+  CONSTRAINT `ppct_ibfk_1` FOREIGN KEY (`idPhieuMuon`) REFERENCES `phieumuon` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phieumuonchitiet`
+--
+
+LOCK TABLES `phieumuonchitiet` WRITE;
+/*!40000 ALTER TABLE `phieumuonchitiet` DISABLE KEYS */;
+INSERT INTO `phieumuonchitiet` VALUES ('cd932ea6-1','Truyện Kiều','5','5','704f837d-c',0,1);
+/*!40000 ALTER TABLE `phieumuonchitiet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phieutra`
+--
+
+DROP TABLE IF EXISTS `phieutra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `phieutra` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `TenSach` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SoLuong` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idPhieuMuonCT` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TienPhat` float NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `idPhieuMuonCT` (`idPhieuMuonCT`),
+  CONSTRAINT `pt_ibfk_1` FOREIGN KEY (`idPhieuMuonCT`) REFERENCES `phieumuonchitiet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phieutra`
+--
+
+LOCK TABLES `phieutra` WRITE;
+/*!40000 ALTER TABLE `phieutra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phieutra` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -249,4 +340,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-19 10:15:09
+-- Dump completed on 2023-04-20 16:00:52
