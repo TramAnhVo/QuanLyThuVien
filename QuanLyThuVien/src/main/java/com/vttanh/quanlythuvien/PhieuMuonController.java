@@ -146,7 +146,7 @@ public class PhieuMuonController implements Initializable {
             if (dspmct.size() != 0) {
 
                 int iddg = dsdg.get(0).getId();
-                PhieuMuon b = new PhieuMuon(txtTen.getText(), dateNgayMuon.getValue(), 0, iddg);
+                PhieuMuon b = new PhieuMuon(txtTen.getText(), 0, iddg);
 
                 try {
                     m.themPhieuMuonSach(b);

@@ -39,7 +39,7 @@ public class PhieuTra {
         this.tienPhat = tienPhat;
     }
 
-    public PhieuTra(String ten, String sl, LocalDate ngayTra, String idPhieuMuonCT, float tienPhat) {
+    public PhieuTra(String ten, String sl, String idPhieuMuonCT, float tienPhat) {
         this.Ten = ten;
         this.SL = sl;
         this.ngayTra = ngayTra;

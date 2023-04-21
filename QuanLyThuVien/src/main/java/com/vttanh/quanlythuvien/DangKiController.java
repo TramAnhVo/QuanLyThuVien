@@ -103,12 +103,17 @@ public class DangKiController implements Initializable {
 
         ThongTin s = new ThongTin();
         try {
-            if ((txtHoTen.getText().isEmpty()) || (txtDiaChi.getText().isEmpty()) || (txtEmail.getText().isEmpty())) {
+            if ((txtHoTen.getText().isEmpty()) || (txtDiaChi.getText().isEmpty()) || 
+                   (txtDiaChi.getText().startsWith(" ")) ||
+                    (txtHoTen.getText().startsWith(" ")) ||
+                    (txtEmail.getText().startsWith(" "))
+                    || (txtEmail.getText().isEmpty())) {
                 MessageBox.getBox("Thông báo", "Bạn chưa nhập thông tin!!!", Alert.AlertType.ERROR).show();
             }
             else 
             {
-                if ( txtSDT.getLength() == 10 ) {
+                if ( txtSDT.getLength() == 10 && txtSDT.getText().matches("\\d+") == true
+                        && txtSDT.getText().startsWith("0") == true) {
                     s.ThemThongTin(q);
                     Reset();
                     loadTableData();
@@ -158,11 +163,11 @@ public class DangKiController implements Initializable {
         colsdt.setPrefWidth(150);
         
         TableColumn colndk = new TableColumn("Ngày đăng kí");
-        colndk.setCellValueFactory(new PropertyValueFactory("NgayDangKi"));
+        colndk.setCellValueFactory(new PropertyValueFactory("NgayDangKi1"));
         colndk.setPrefWidth(150);
         
         TableColumn colht = new TableColumn("Hạn thẻ");
-        colht.setCellValueFactory(new PropertyValueFactory("HanThe"));
+        colht.setCellValueFactory(new PropertyValueFactory("HanThe1"));
         colht.setPrefWidth(150);
         
         this.tbDocGia.getColumns().addAll(colid, colname,colns, colgt,colsdt, colndk, colht);

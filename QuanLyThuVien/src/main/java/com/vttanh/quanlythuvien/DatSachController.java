@@ -37,32 +37,41 @@ import javafx.stage.Stage;
  * @author Trâm Anh
  */
 public class DatSachController implements Initializable {
-    @FXML private TextField txtTen;
-    @FXML private TextField txtEmail;
-    @FXML private TextField txtSDT;
-    @FXML private TextField txtSL;
-    @FXML private DatePicker dateNgayDat;
-    @FXML private Button btHuy;
-    @FXML private ComboBox<GioiTinh> cbGioiTinh;
-    @FXML private TableView<DatSach> tbDatSach;
-    
+
+    @FXML
+    private TextField txtTen;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtSDT;
+    @FXML
+    private TextField txtSL;
+    @FXML
+    private DatePicker dateNgayDat;
+    @FXML
+    private Button btHuy;
+    @FXML
+    private ComboBox<GioiTinh> cbGioiTinh;
+    @FXML
+    private TableView<DatSach> tbDatSach;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ThongTinChungService f = new ThongTinChungService();
         try {
             List<GioiTinh> gt = f.getGioiTinh();
             this.cbGioiTinh.setItems(FXCollections.observableList(gt));
-        
+
             this.loadTable();
             this.loadData();
         } catch (SQLException ex) {
             Logger.getLogger(DatSachController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-    
+    }
+
     public void DangkiDatSach(ActionEvent evt) {
         DatSach q;
-        q = new DatSach(this.txtTen.getText(), 
+        q = new DatSach(this.txtTen.getText(),
                 this.cbGioiTinh.getSelectionModel().getSelectedItem().getId(),
                 this.txtSDT.getText(),
                 this.txtEmail.getText(),
@@ -71,17 +80,25 @@ public class DatSachController implements Initializable {
 
         DatSachServices s = new DatSachServices();
         try {
-            if ((txtTen.getText().isEmpty()) || (txtSL.getText().isEmpty()) || (txtEmail.getText().isEmpty()) )
-            {
+            if ((txtTen.getText().isEmpty()) || (txtSL.getText().isEmpty())
+                    || (txtTen.getText().startsWith(" ")) && txtTen.getText().matches("\\d+") == false
+                    || (txtEmail.getText().isEmpty())) {
                 MessageBox.getBox("Thông báo", "Bạn chưa nhập thông tin!!!!", Alert.AlertType.ERROR).show();
-            }
-            else 
-            {
-                if (txtSDT.getLength() == 10) {
-                    s.themDatSach(q);
-                    this.loadData();
-                    Reset();
-                    MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+            } else {
+                if (txtSDT.getLength() == 10 && txtSDT.getText().matches("\\d+") == true
+                        && txtSDT.getText().startsWith("0") == true) 
+                    {      
+                        int so = Integer.parseInt(txtSL.getText());
+                    if (txtSL.getLength() == 1 && txtSL.getText().matches("\\d+") == true
+                            && txtSL.getText().startsWith("0") == false
+                            && so < 6) {
+                        s.themDatSach(q);
+                        this.loadData();
+                        Reset();
+                        MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+                    } else {
+                        MessageBox.getBox("Thông báo", "Nhập thông tin số lượng sai!!!", Alert.AlertType.ERROR).show();
+                    }
                 } else {
                     MessageBox.getBox("Thông báo", "Nhập số điện thoại sai!!!!", Alert.AlertType.ERROR).show();
                 }
@@ -91,7 +108,7 @@ public class DatSachController implements Initializable {
             Logger.getLogger(DangKiController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void Reset() {
         txtTen.clear();
         txtEmail.clear();
@@ -99,48 +116,47 @@ public class DatSachController implements Initializable {
         txtSL.clear();
         cbGioiTinh.getSelectionModel().clearSelection();
     }
-    
+
     public void Exit(ActionEvent event) throws Exception {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Thông báo");
         a.setHeaderText("Bạn muốn thoát?");
         Optional<ButtonType> re = a.showAndWait();
-        if (re.get() == ButtonType.OK)
-            {
-                Stage stage = (Stage) btHuy.getScene().getWindow();
-                stage.close();
-            }
+        if (re.get() == ButtonType.OK) {
+            Stage stage = (Stage) btHuy.getScene().getWindow();
+            stage.close();
+        }
     }
-    
+
     private void loadTable() {
         TableColumn colid = new TableColumn("STT");
         colid.setCellValueFactory(new PropertyValueFactory("id"));
         colid.setPrefWidth(100);
-        
+
         TableColumn colname = new TableColumn("Họ và tên độc giả");
         colname.setCellValueFactory(new PropertyValueFactory("Ten"));
         colname.setPrefWidth(220);
-        
+
         TableColumn colgt = new TableColumn("Giới tính");
         colgt.setCellValueFactory(new PropertyValueFactory("GT"));
         colgt.setPrefWidth(105);
-        
+
         TableColumn colsdt = new TableColumn("Số điện thoại");
         colsdt.setCellValueFactory(new PropertyValueFactory("SDT"));
         colsdt.setPrefWidth(150);
-                      
+
         TableColumn colemail = new TableColumn("Email");
         colemail.setCellValueFactory(new PropertyValueFactory("Email"));
         colemail.setPrefWidth(200);
-        
+
         TableColumn colnds = new TableColumn("Ngày đặt sách");
         colnds.setCellValueFactory(new PropertyValueFactory("NgayDat"));
         colnds.setPrefWidth(150);
-        
-        this.tbDatSach.getColumns().addAll(colid, colname,colgt,colsdt,colemail, colnds);
+
+        this.tbDatSach.getColumns().addAll(colid, colname, colgt, colsdt, colemail, colnds);
     }
-    
-    private void loadData() throws SQLException{
+
+    private void loadData() throws SQLException {
         DatSachServices s = new DatSachServices();
         List<DatSach> k = s.xemThongTinDatSach();
         this.tbDatSach.setItems(FXCollections.observableList(k));

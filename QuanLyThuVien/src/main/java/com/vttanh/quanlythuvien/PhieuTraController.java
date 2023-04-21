@@ -78,32 +78,6 @@ public class PhieuTraController implements Initializable {
         });
     }
 
-//    public int CheckTienPhat() throws SQLException {
-//
-//        int ngay = 0;
-//        int id = Integer.parseInt(txtid.getText());
-//
-//        List<PhieuMuon> dspm = s.getPhieuMuonByid_DocGia(id);
-//
-////       chuyển kiểu date -> localdate
-//        Date ngayMuon = (Date) dspm.get(0).getNgayMuon1();
-//        Date hienTai = Date.valueOf(LocalDate.now());
-////        long soNgay = ChronoUnit.DAYS.between(hienTai.toInstant(), ngayMuon.toInstant());
-////         Instant instant = ngaym.toInstant();
-////         ZoneId zone = ZoneId.systemDefault();  //Lấy múi giờ mặc định
-////         ZonedDateTime zdt = instant.atZone(zone);
-////         LocalDate ngayMuon = zdt.toLocalDate();
-//
-////      Chuyển đổi từ Date sang LocalDateTime
-////        LocalDateTime localDateTime = LocalDateTime.ofInstant(ngaym.toInstant(), java.time.ZoneId.systemDefault());
-//        // Chuyển đổi từ LocalDateTime sang LocalDate
-////        LocalDate ngayMuon = localDateTime.toLocalDate();
-////        LocalDate hienTai = LocalDate.now();
-////        Period period = Period.between(ngayMuon, hienTai);
-////        int days = period.getDays();
-////        ngay = days - 30;
-//        return ngay;
-//    }
 
     public void ThemPhieuTra(ActionEvent evt) throws SQLException {
         int id = Integer.parseInt(txtid.getText());
@@ -111,7 +85,6 @@ public class PhieuTraController implements Initializable {
         List<PhieuMuon> dspm = s.getPhieuMuonByid_DocGia(id);
         List<PhieuMuonChiTiet> dspmct = pmcts.getPhieuMuonCTByIDPM(dspm.get(0).getId());
 
-//        CheckTienPhat();
 
         if (dspmct.size() != 0) {
 
@@ -127,7 +100,7 @@ public class PhieuTraController implements Initializable {
                         slm = slm - slt;
                         String st = Integer.toString(slm);
                         try {
-                            PhieuTra pt = new PhieuTra(txtTenSach.getText(), txtSoLuong.getText(), dateNgayMuon.getValue(), pmct.getId(), 0);
+                            PhieuTra pt = new PhieuTra(txtTenSach.getText(), txtSoLuong.getText(), pmct.getId(), 0);
                             pmct.setSLCT(st);
 
                             pts.themPhieuTra(pt);
@@ -145,7 +118,7 @@ public class PhieuTraController implements Initializable {
                         break;
                     }
                     if (slm == slt) {
-                        PhieuTra pt = new PhieuTra(txtTenSach.getText(), txtSoLuong.getText(), dateNgayMuon.getValue(), pmct.getId(), 5000);
+                        PhieuTra pt = new PhieuTra(txtTenSach.getText(), txtSoLuong.getText(),  pmct.getId(), 5000);
 
                         pmct.setSLCT("0");
                         pmct.setTrangThai(1);

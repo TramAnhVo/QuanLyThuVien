@@ -84,16 +84,33 @@ public class NhapSachController implements Initializable {
                 
         SachService p = new SachService();
         try {
-            if ((txtTen.getText().isEmpty()) || (txtMoTa.getText().isEmpty()) || (txtNXB.getText().isEmpty()) || (txtSoLuong.getText().isEmpty()))
+            if ((txtTen.getText().isEmpty()) || (txtMoTa.getText().isEmpty())
+                    || (txtTen.getText().startsWith(" "))|| (txtNXB.getText().isEmpty()) || (txtSoLuong.getText().isEmpty()))
             {
                MessageBox.getBox("Thông báo", "Bạn chưa nhập thông tin!!!", Alert.AlertType.ERROR).show();
             }
             else
             {
-                p.themSach(s);
-                this.loadTableData(null);
-                MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
-                Reset();
+                if(txtNXB.getLength() == 4 && txtNXB.getText().matches("\\d+") == true
+                        && txtNXB.getText().startsWith("0")== false)
+                {
+                   if(txtSoLuong.getLength() == 2 && txtSoLuong.getText().matches("\\d+") == true
+                        && txtSoLuong.getText().startsWith("0")== false)
+                   {
+                       p.themSach(s);
+                       this.loadTableData(null);
+                       MessageBox.getBox("Thông báo", "Thêm thông tin thành công!!", Alert.AlertType.INFORMATION).show();
+                       Reset();
+                   }                  
+                   else
+                   {
+                       MessageBox.getBox("Thông báo", "Nhập thông tin số lượng sai!!!", Alert.AlertType.ERROR).show();            
+                   }
+                }
+                 else 
+                {
+                    MessageBox.getBox("Thông báo", "Nhập thông tin năm xuất bản sai!!!", Alert.AlertType.ERROR).show();            
+                } 
             }
         } catch (SQLException ex) {
             MessageBox.getBox("Thông báo", "Thêm thông tin thất bại", Alert.AlertType.ERROR).show();

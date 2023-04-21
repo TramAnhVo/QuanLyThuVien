@@ -30,7 +30,7 @@ public class DocGia {
 
     {
         setNgayDangKi(LocalDate.now());
-        setHanThe(getNgayDangKi().plusYears(1));        
+        setHanThe(getNgayDangKi().plusYears(3));        
     }
     
     // nap du lieu len giao dien

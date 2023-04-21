@@ -35,9 +35,8 @@ import java.util.UUID;
         }
         
         // lay xuong csdl
-        public PhieuMuon( String Ten, LocalDate NgayMuon, int trangThai, int id_DocGia) {
+        public PhieuMuon( String Ten, int trangThai, int id_DocGia) {
             this.Ten = Ten;
-            this.NgayMuon = NgayMuon;
             this.trangThai = trangThai;
             this.id_DocGia = id_DocGia;
         }
